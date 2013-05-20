@@ -11,4 +11,3 @@ CREATE TABLE `Genome` (
   `Species` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`idSpecies`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2015 DEFAULT CHARSET=big5$$
-

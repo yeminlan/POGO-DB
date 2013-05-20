@@ -97,4 +97,3 @@ CREATE TABLE `data` (
 `COG0012(-)` float DEFAULT NULL,
   PRIMARY KEY (`data_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=big5$$
-
