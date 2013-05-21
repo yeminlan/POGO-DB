@@ -1,0 +1,17 @@
+body { 
+  margin-top:0em;
+}
+
+.header { 
+  background-color:lightblue;
+  padding:.2em;
+}
+
+.footer { 
+  background-color:lightblue;
+  padding:.2em;
+}
+.results { 
+  background-color:#E8E8E8;
+  padding:.2em;
+}
