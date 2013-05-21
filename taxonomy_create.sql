@@ -1,8 +1,8 @@
 delimiter $$
 
-CREATE TABLE `Taxonomy` (
+CREATE TABLE `taxonomy` (
   `idSpecies` int(11) NOT NULL AUTO_INCREMENT,
-  `Genome Name` varchar(256) DEFAULT NULL,
+  `Genome` varchar(256) DEFAULT NULL,
   `Phylum` varchar(256) DEFAULT NULL,
   `Class` varchar(256) DEFAULT NULL,
   `Order` varchar(256) DEFAULT NULL,

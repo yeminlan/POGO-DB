@@ -2,7 +2,7 @@ delimiter $$
 
 CREATE TABLE `data` (
 `data_id` int(11) NOT NULL AUTO_INCREMENT,
-`Genome_id1` varchar(256) NOT NULL,
+`genome_id1` varchar(256) NOT NULL,
 `number_of_genes1` int(11) DEFAULT NULL,
 `genome_id2` varchar(256) NOT NULL,
 `number_of_genes2` int(11) DEFAULT NULL,
