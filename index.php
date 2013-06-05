@@ -121,6 +121,7 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 <div class="buttonGroup">
 <button id="clearAll" onClick="clearTable('#BoxA');clearTable('#BoxB')">Reset Comparison</button>
 <button id="submit" onClick="submit()">Submit Query</button>
+<form name="form" id="form" action=results.php></form>
 </div>
 </center>
 </body>

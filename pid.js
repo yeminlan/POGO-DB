@@ -23,6 +23,18 @@ $(document).ready(function(){
 
 });
 
+
+function error(string, errorBox) {
+  console.log(string);
+}
+
+function EncodeQueryData(data) {
+  var ret = [];
+  for (var d in data)
+    ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+  return ret.join("&");
+}
+
 function getSelected(table) {
     return table.$('tr.row_selected');
 }
@@ -107,7 +119,7 @@ function clearTable(box) {
 
 function addValueToSelectTable(select, item) {
   select = "#" + select;
-  index = $(select).dataTable().fnAddData( [item['Genus'], item['Species'], item['Genome']] );
+  index = $(select).dataTable().fnAddData( [item['Genus'], item['Species'], item['Genome'], item['idGenome']] );
   input = $(select).dataTable().fnGetNodes()[index];
   $(input).click( function( e ) {
       if ( $(this).hasClass('row_selected') ) {
@@ -159,13 +171,46 @@ function checkDuplicate(select, string) {
 
 function submit() {
 
+  var i = 0;
   atable = $('#BoxA').dataTable();
   btable = $('#BoxB').dataTable();
   a_num_rows = atable.fnSettings().fnRecordsTotal();
   b_num_rows = btable.fnSettings().fnRecordsTotal();
+
+  var a_ids = "";
+  var b_ids = "";
+
+  if(a_num_rows == 0 || b_num_rows == 0) {
+    error("You must have at least one Genome in each table", "#SubmitError");
+  }
+
+  for(i = 0; i < a_num_rows; i++) {
+    a_ids = atable.fnGetData(i)[3] + "," + a_ids; 
+  }
+
+  for(i = 0; i < b_num_rows; i++) {
+    b_ids = btable.fnGetData(i)[3] + "," + b_ids;
+  }
   
-  a_string =  
+  a_input = document.createElement("input");
+  b_input = document.createElement("input");
+
+  a_input.type = 'hidden';
+  b_input.type = 'hidden';
+
+  a_input.name="a";
+  b_input.name="b";
+
+  a_input.value = a_ids;
+  b_input.value = b_ids;
+
+  document.forms['form'].appendChild(a_input);
+  document.forms['form'].appendChild(b_input);
+
+  document.forms['form'].submit();
 }
+
+
 function populate() { 
 
   var Genomes = document.getElementById('Genome');
