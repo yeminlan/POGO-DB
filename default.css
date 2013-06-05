@@ -1,0 +1,60 @@
+body { 
+  margin-top:0em;
+  font-family:sans-serif;
+  background-color:#E8E8E8;
+  padding:.2em;
+}
+
+.header { 
+  background-color:lightblue;
+  padding:.2em;
+}
+
+.footer { 
+  background-color:lightblue;
+  padding:.2em;
+}
+
+
+.dataTables_Wrapper {
+  margin-left:10%;
+  margin-right:10%;
+}
+
+table.display tr.even.row_selected td {
+  background-color: #B0BED9;
+}
+
+table.display tr.odd.row_selected td {
+  background-color: #9FAFD1;
+}
+
+.header {
+background-color: #ADD8E6;
+border-top: solid 2px #08c;
+border-bottom: solid 2px #08c;
+margin: 5px 0px 10px 0px;
+overflow: auto;
+width: 100%;
+}
+
+.h_link:link{
+  color:#08c;
+  text-decoration:none;
+}
+
+.h_link:visited{
+  color:#08c;
+  text-decoration:none;
+}
+
+.h_title{
+float: left;
+padding: .2em .2em .2em .2em;
+font-size:200%;
+}
+
+.h_logo{
+float:right;
+padding:.2em;
+}
