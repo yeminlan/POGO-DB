@@ -7,7 +7,7 @@ include 'login.php';
 include 'search.php';
 error_reporting(E_ALL);
 
-$query = "SELECT Genus, Species, Genome, idGenome FROM taxonomy;";
+$query = "SELECT Genus, Species, Genome, id FROM taxonomy;";
 $result = mysqli_query($con, $query);
 $taxonomy=array();
 
@@ -43,8 +43,8 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="default.css">
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="//datatables.net/download/build/jquery.dataTables.nightly.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="pid.js"></script>
 
 <title>PID</title>
@@ -54,8 +54,16 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 <body>
 
 <?php include 'header.php'; ?>
+<div class=main>
+<h1>Pairwise Identity Database</h1>
+<p>
+Welcome to the Pairwise Identity Database.
+</p>
+<p>
+Select two sets of genomes to compare: 
+</p>
 <center>
-<h2>Available Genomes</h2>
+<h3>Genomes Available</h3>
 <table style="left-margin:10%;right-margin:10%;"> 
 <tr>
 <script type="text/javascript" charset="utf8">
@@ -122,6 +130,7 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 <button id="clearAll" onClick="clearTable('#BoxA');clearTable('#BoxB')">Reset Comparison</button>
 <button id="submit" onClick="submit()">Submit Query</button>
 <form name="form" id="form" action=results.php></form>
+</div>
 </div>
 </center>
 </body>

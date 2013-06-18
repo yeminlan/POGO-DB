@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     settings = { "bPaginate":true,
+                 "bSaveState":true,
                  "bScrollCollapse": true,
                  "bFilter":false,
                  "oLanguage": {
@@ -119,7 +120,7 @@ function clearTable(box) {
 
 function addValueToSelectTable(select, item) {
   select = "#" + select;
-  index = $(select).dataTable().fnAddData( [item['Genus'], item['Species'], item['Genome'], item['idGenome']] );
+  index = $(select).dataTable().fnAddData( [item['Genus'], item['Species'], item['Genome'], item['id']] );
   input = $(select).dataTable().fnGetNodes()[index];
   $(input).click( function( e ) {
       if ( $(this).hasClass('row_selected') ) {
@@ -192,6 +193,9 @@ function submit() {
     b_ids = btable.fnGetData(i)[3] + "," + b_ids;
   }
   
+  a_ids = a_ids.substring(0, a_ids.length - 1);
+  b_ids = b_ids.substring(0, b_ids.length - 1);
+
   a_input = document.createElement("input");
   b_input = document.createElement("input");
 
