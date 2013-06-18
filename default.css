@@ -1,20 +1,20 @@
 body { 
   margin-top:0em;
   font-family:sans-serif;
-  background-color:#E8E8E8;
-  padding:.2em;
-}
-
-.header { 
-  background-color:lightblue;
-  padding:.2em;
+  background-color:#FFFFFF;
 }
 
 .footer { 
   background-color:lightblue;
+  border-bottom: solid 2px #08c;
   padding:.2em;
 }
 
+.main {
+
+  padding:.2em;
+  background-color:#EEEEEE;
+}
 
 .dataTables_Wrapper {
   margin-left:10%;
@@ -31,11 +31,9 @@ table.display tr.odd.row_selected td {
 
 .header {
 background-color: #ADD8E6;
-border-top: solid 2px #08c;
 border-bottom: solid 2px #08c;
-margin: 5px 0px 10px 0px;
 overflow: auto;
-width: 100%;
+padding:.2em;
 }
 
 .h_link:link{

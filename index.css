@@ -1,0 +1,12 @@
+.dataTables_Wrapper {
+  margin-left:10%;
+  margin-right:10%;
+}
+
+table.display tr.even.row_selected td {
+  background-color: #B0BED9;
+}
+
+table.display tr.odd.row_selected td {
+  background-color: #9FAFD1;
+}

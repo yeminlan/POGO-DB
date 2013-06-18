@@ -3,7 +3,7 @@
 <head>
 <title> PID - Results </title>
 <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
-<link rel="stylesheet" type="text/css" href="results.css">
+<link rel="stylesheet" type="text/css" href="default.css">
 <link rel="stylesheet" type="text/css" href="lib/jqplot/jquery.jqplot.min.css">
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -18,6 +18,7 @@
 
 
 <body>
+<div class="main">
 <?php
 
   include 'header.php';
@@ -82,5 +83,6 @@ var dataColumns = <?php echo json_encode($dataColumns); ?>;
     </script>
   </tr></thead></table>
 </body>
+<?php include 'footer.php';?>
 
 </html>

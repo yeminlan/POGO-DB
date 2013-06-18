@@ -42,6 +42,7 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 
 <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="default.css">
+<link rel="stylesheet" type="text/css" href="index.css">
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
@@ -133,5 +134,6 @@ Select two sets of genomes to compare:
 </div>
 </div>
 </center>
+<?php include 'footer.php';?>
 </body>
 </html>
