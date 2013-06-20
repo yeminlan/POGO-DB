@@ -1,3 +1,8 @@
+var plot;
+
+$(window).resize(function() {
+    plot.replot( { resetAxes: true } );
+});
 
 $(document).ready(function(){
 
@@ -9,7 +14,8 @@ $(document).ready(function(){
     "bAutoWidth": false,
     "sScrollX": "100%",
     "sScrollY": "100%", 
-    "bScrollCollapse": true
+    "bScrollCollapse": true,
+    "sDom": 'T<"clear">lfrtip',
     }
 
     dataTable = $('#data').dataTable(settings);
@@ -18,6 +24,7 @@ $(document).ready(function(){
     dataTable.fnSetColumnVis(2, false);
     dataTable.fnSetColumnVis(3, false);
     dataTable.fnSetColumnVis(4, false);
+    dataTable.fnSetColumnVis(dataTable.fnGetData(0).length - 1, false);
     
     new FixedColumns( dataTable, {"iLeftColumns": 2} );
 
@@ -25,7 +32,7 @@ $(document).ready(function(){
     xselect = document.getElementById("x");
     
     // populate our dropdown box
-    for(var i = 5; i < dataColumns.length; i++){
+    for(var i = 5; i < dataColumns.length - 1; i++){
         var o1 = document.createElement("option");
         var o2 = document.createElement("option");
         o1.text = dataColumns[i];
@@ -55,27 +62,78 @@ function updateGraph() {
     
   var x_val = x.options[x.selectedIndex].value;
   var y_val = y.options[y.selectedIndex].value;
-  var arr = [];
+
+  var xy_arr_avb = [];
+  var xy_arr_ava = [];
+  var xy_arr_bvb = [];
+
+  vselement = data[0].length - 1;
   for(i in data) { 
     if(data[i][x_val] !== null && data[i][y_val] !== null) {
-      arr.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val])]);
-      console.log(i + " " + data[i][x_val] + " " + parseFloat(data[i][y_val]));
+      if(data[i][vselement] === 'ava')
+        xy_arr_ava.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val])]);
+      if(data[i][vselement] === 'avb')
+        xy_arr_avb.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val])]);
+      if(data[i][vselement] === 'bvb')
+        xy_arr_bvb.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val])]);
     }  
   }
+
+  // Populate our legend lables and array of arrays
+
+  label_arr = []; 
+  array_of_arrays = [];
+  label_show = true;
+
+  label_arr.push("A vs. B");
+  array_of_arrays.push(xy_arr_avb);
+
+  if(xy_arr_ava.length > 0) {
+    label_arr.push("A vs. A");
+    array_of_arrays.push(xy_arr_ava);
+  }
+  if(xy_arr_bvb.length > 0)  {
+    label_arr.push("B vs. B");
+    array_of_arrays.push(xy_arr_avb);
+  }
+
+  // if we only have one array, avb, we don't need to show a label.
+  if(label_arr.length == 1) 
+    label_show = false;
+  
+  
   $('#chart').empty();
-  plot = $.jqplot('chart', [arr], 
+  plot = $.jqplot('chart', array_of_arrays, 
   { 
+    seriesColors: ["#A60400", "9999FF", "#1240AB"],
     title: x.options[x.selectedIndex].text + " vs. " + y.options[y.selectedIndex].text,
-    series:[{
+    legend: {
+      show:label_show,
+      labels: label_arr
+    },
+    series:[
+    {
       showLine:false,
-      markerOptions: { size: 5, style:"circle"} 
-    }],
+      markerOptions: { size: 5 } 
+      },
+      {
+      showLine:false,
+      markerOptions: { size: 5 } 
+      },
+      { 
+      showLine:false,
+      markerOptions: { size: 5 }
+      }
+
+    ],
     axes: {
       xaxis: {
-        label: x.options[x.selectedIndex].text
+        label: x.options[x.selectedIndex].text,
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
         },
       yaxis: {
-        label: y.options[y.selectedIndex].text 
+        label: y.options[y.selectedIndex].text, 
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
         }
     },
     highlighter: {

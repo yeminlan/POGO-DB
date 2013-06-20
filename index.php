@@ -48,11 +48,12 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="pid.js"></script>
 
-<title>PID</title>
+<title>POGO - Home</title>
 
 </head>
 
 <body>
+<div id=container>
 
 <?php include 'header.php'; ?>
 <div class=main>
@@ -65,9 +66,9 @@ Select two sets of genomes to compare:
 </p>
 <center>
 <h3>Genomes Available</h3>
-<table style="left-margin:10%;right-margin:10%;"> 
+<table style="top-margin:10%;"> 
 <tr>
-<script type="text/javascript" charset="utf8">
+<script type="text/javascript">
   var taxonomy = <?php echo json_encode($taxonomy); ?>;
   var genus = <?php echo json_encode($genus); ?>;
   var species = <?php echo json_encode($species); ?>;
@@ -76,64 +77,67 @@ Select two sets of genomes to compare:
 </script>
 
 <td>
-  Genus:<br>
+  Genus:<br />
   <select onChange="selected('Genus')" id='Genus' size=20></select>
-  <center>
     <p>
       <button onClick="add('Genus', 'A')" id='GenusAddA'>Add Genus to A</button>
+      <br />
       <button onClick="add('Genus', 'B')" id='GenusAddBr'> Add Genus to B</button>
     </p>
-  </center>
 </td>
 
 <td>
-  Species:<br>
+  Species:<br />
   <select onChange="selected('Species')" id='Species' size=20></select>
-  <center>
     <p>
       <button onClick="add('Species', 'A')" id='SpeciesAddA'>Add Species to A</button>
+      <br />
       <button onClick="add('Species', 'B')" id='SpeciesAddBr'> Add Species to B</button>
     </p>
- </center>
 </td>
 
-<td>Genome:<br>
+<td>Genome:<br />
   <select id='Genome' size=20></select>
-  <center>
     <p>
-      <button onClick="add('Genome', 'A')"id='GenomeAddA'>Add Genome to A</button>
+      <button onClick="add('Genome', 'A')" id='GenomeAddA'>Add Genome to A</button>
+      <br />
       <button onClick="add('Genome', 'B')" id='GenomeAddBr'> Add Genome to B</button>
     </p>
-  </center>
 </td>
 
 <script type="text/javascript">
   populate();
 </script>
-</td>
+</tr>
 </table>
 
-<p>
 <h3>Selected Items</h3>
-</p>
 
 <h4>A Items</h4>
-<table class="display" id="BoxA"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead></td></tr><tbody></tbody></table><br>
-<button "removeA" onClick="rm('#BoxA')">Remove Selected Item from A</button>
-<button "removeAllA" onClick="clearTable('#BoxA')">Remove All from A</button>
+  <table class="display" id="BoxA"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead></td></tr><tbody></tbody></table><br>
+    <button id="removeA" onClick="rm('#BoxA')">Remove Selected Item from A</button>
+    <button id="removeAllA" onClick="clearTable('#BoxA')">Remove All from A</button>
 
 <h4>B Items</h4>
-<table class="display" id="BoxB"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead></td></tr><tbody></tbody></table><br>
+  <table class="display" id="BoxB"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead></td></tr><tbody></tbody></table><br>
+    <button id="removeB" onClick="rm('#BoxB')">Remove Selected Item from B</button>
+    <button id="removeAllB" onClick="clearTable('#BoxB')">Remove All from B</button>
+
 <p>
-<button id="removeB" onClick="rm('#BoxB')">Remove Selected Item from B</button>
-<button "removeAllB" onClick="clearTable('#BoxB')">Remove All from B</button>
-<div class="buttonGroup">
-<button id="clearAll" onClick="clearTable('#BoxA');clearTable('#BoxB')">Reset Comparison</button>
-<button id="submit" onClick="submit()">Submit Query</button>
-<form name="form" id="form" action=results.php></form>
+  <input type="checkbox" id="AvA"> Compare A to itself.
+  <input type="checkbox" id="BvB"> Compare B to itself.
+  <input type="checkbox" id="AverageRanking">Average Ranking <sup><a href="">?</a> </sup>
+</p>
+
+<p>
+  <button id="clearAll" onClick="clearTable('#BoxA');clearTable('#BoxB')">Reset Comparison</button>
+  <button id="submit" onClick="submit()">Submit Query</button>
+  <form name="form" method="post" id="form" action=results.php></form>
+</p>
 </div>
 </div>
 </center>
 <?php include 'footer.php';?>
+</div>
 </body>
 </html>

@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 
     settings = { "bPaginate":true,
@@ -22,6 +24,7 @@ $(document).ready(function(){
     });
 
 
+    populate();
 });
 
 
@@ -181,7 +184,7 @@ function submit() {
   var a_ids = "";
   var b_ids = "";
 
-  if(a_num_rows == 0 || b_num_rows == 0) {
+  if(a_num_rows == 0 && b_num_rows == 0) {
     error("You must have at least one Genome in each table", "#SubmitError");
   }
 
@@ -210,6 +213,33 @@ function submit() {
 
   document.forms['form'].appendChild(a_input);
   document.forms['form'].appendChild(b_input);
+
+  // checkboxes 
+  var ava = $('#AvA').value;
+  var bvb = $('#BvB').value;
+  var averageranking = $('#AverageRanking').value;
+
+  ava_input = document.createElement("input");
+  bvb_input = document.createElement("input");
+  average_ranking_input = document.createElement("input");
+
+  ava_input.type = 'hidden';
+  bvb_input.type = 'hidden';
+  average_ranking_input.type = 'hidden';
+
+  ava_input.name="ava";
+  bvb_input.name="bvb";
+  average_ranking_input.name="avgrank";
+
+  ava_input.value = document.getElementById('AvA').checked;
+  bvb_input.value = document.getElementById('BvB').checked;
+  average_ranking_input.value = document.getElementById('AverageRanking').checked;
+
+  document.forms['form'].appendChild(ava_input);
+  document.forms['form'].appendChild(bvb_input);
+  document.forms['form'].appendChild(average_ranking_input);
+
+  document.getElementById("form").setAttribute("method", "post");
 
   document.forms['form'].submit();
 }
