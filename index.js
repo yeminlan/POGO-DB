@@ -27,14 +27,7 @@ $(document).ready(function(){
 
 
 function error(string, errorBox) {
-  console.log(string);
-}
-
-function EncodeQueryData(data) {
-  var ret = [];
-  for (var d in data)
-    ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
-  return ret.join("&");
+  window.alert(string);
 }
 
 function getSelected(table) {
@@ -183,7 +176,23 @@ function submit() {
   var b_ids = "";
 
   if(a_num_rows == 0 && b_num_rows == 0) {
-    error("You must have at least one Genome in a table", "#SubmitError");
+    error("Your tables are empty!", "#SubmitError");
+    return;
+  }
+
+  if(document.getElementById('AvA').checked && a_num_rows <= 1) {
+    error("You need at least two genomes in A to compare A vs. A", "#SubmitError");
+    return;
+  }
+
+  if(document.getElementById('BvB').checked && b_num_rows <= 1) {
+    error("You need at least two genomes in B to compare B vs. B", "#SubmitError");
+    return;
+  }
+
+  if(document.getElementById('AvB').checked && (b_num_rows <= 1 || a_num_rows <= 1)) {
+    error("You need at least one genome in A and B", "#SubmitError");
+    return;
   }
 
   for(i = 0; i < a_num_rows; i++) {
