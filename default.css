@@ -12,6 +12,17 @@ body {
   background-color:#FFFFFF;
 }
 
+
+.centered {
+  display:block;
+  margin-left:auto; !Important;
+  margin-right:auto; !Important;
+}
+
+.Select {
+  float:left;
+}
+
 .footer { 
   background-color:#ADD9E6;
   padding:.2em;

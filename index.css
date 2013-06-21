@@ -1,6 +1,8 @@
 .dataTables_Wrapper {
-  margin-left:10%;
-  margin-right:10%;
+}
+
+select {
+  width:100%;
 }
 
 table.display tr.even.row_selected td {
