@@ -55,11 +55,6 @@ function updateGraph() {
   x = document.getElementById("x");
   y = document.getElementById("y");
 
-  if(x.selectedIndex == -1) 
-    return;
-  if(y.selectedIndex == -1) 
-    return;
-    
   var x_val = x.options[x.selectedIndex].value;
   var y_val = y.options[y.selectedIndex].value;
 
@@ -85,27 +80,25 @@ function updateGraph() {
   array_of_arrays = [];
   label_show = true;
 
-  label_arr.push("A vs. B");
-  array_of_arrays.push(xy_arr_avb);
-
   if(xy_arr_ava.length > 0) {
     label_arr.push("A vs. A");
     array_of_arrays.push(xy_arr_ava);
   }
-  if(xy_arr_bvb.length > 0)  {
-    label_arr.push("B vs. B");
+
+  if(xy_arr_avb.length > 0)  {
+    label_arr.push("A vs. B");
     array_of_arrays.push(xy_arr_avb);
   }
 
-  // if we only have one array, avb, we don't need to show a label.
-  if(label_arr.length == 1) 
-    label_show = false;
-  
-  
+  if(xy_arr_bvb.length > 0)  {
+    label_arr.push("B vs. B");
+    array_of_arrays.push(xy_arr_bvb);
+  }
+
   $('#chart').empty();
   plot = $.jqplot('chart', array_of_arrays, 
   { 
-    seriesColors: ["#A60400", "9999FF", "#1240AB"],
+    seriesColors: ["#A60400", "9999FF", "#000"],
     title: x.options[x.selectedIndex].text + " vs. " + y.options[y.selectedIndex].text,
     legend: {
       show:label_show,

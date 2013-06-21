@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -46,7 +47,11 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="pid.js"></script>
+<script type="text/javascript" src="index.js"></script>
+
+<script type="text/javascript">
+  populate();
+</script>
 
 <title>POGO - Home</title>
 
@@ -64,10 +69,9 @@ Welcome to the Pairwise Identity Database.
 <p>
 Select two sets of genomes to compare: 
 </p>
-<center>
+<div class="centered"><center>
 <h3>Genomes Available</h3>
-<table style="top-margin:10%;"> 
-<tr>
+
 <script type="text/javascript">
   var taxonomy = <?php echo json_encode($taxonomy); ?>;
   var genus = <?php echo json_encode($genus); ?>;
@@ -75,6 +79,9 @@ Select two sets of genomes to compare:
   var genome = <?php echo json_encode($genome); ?>;
 
 </script>
+
+<table style="top-margin:10%;"> 
+<tr>
 
 <td>
   Genus:<br />
@@ -105,39 +112,38 @@ Select two sets of genomes to compare:
     </p>
 </td>
 
-<script type="text/javascript">
-  populate();
-</script>
 </tr>
 </table>
 
 <h3>Selected Items</h3>
 
 <h4>A Items</h4>
-  <table class="display" id="BoxA"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead></td></tr><tbody></tbody></table><br>
+  <table class="display" id="BoxA"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead><tbody></tbody></table><br>
     <button id="removeA" onClick="rm('#BoxA')">Remove Selected Item from A</button>
     <button id="removeAllA" onClick="clearTable('#BoxA')">Remove All from A</button>
 
 <h4>B Items</h4>
-  <table class="display" id="BoxB"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead></td></tr><tbody></tbody></table><br>
+  <table class="display" id="BoxB"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead><tbody></tbody></table><br>
     <button id="removeB" onClick="rm('#BoxB')">Remove Selected Item from B</button>
     <button id="removeAllB" onClick="clearTable('#BoxB')">Remove All from B</button>
 
 <p>
-  <input type="checkbox" id="AvA"> Compare A to itself.
-  <input type="checkbox" id="BvB"> Compare B to itself.
+  <input type="checkbox" id="AvA">Compare A to itself.
+  <input type="checkbox" checked=checked id="AvB">Compare A to B.
+  <input type="checkbox" id="BvB">Compare B to itself.
   <input type="checkbox" id="AverageRanking">Average Ranking <sup><a href="">?</a> </sup>
 </p>
 
 <p>
   <button id="clearAll" onClick="clearTable('#BoxA');clearTable('#BoxB')">Reset Comparison</button>
   <button id="submit" onClick="submit()">Submit Query</button>
-  <form name="form" method="post" id="form" action=results.php></form>
 </p>
-</div>
-</div>
+
+<form name="form" method="post" id="form" action=results.php></form>
 </center>
-<?php include 'footer.php';?>
 </div>
+</div>
+</div>
+<?php include 'footer.php';?>
 </body>
 </html>

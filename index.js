@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
 
     settings = { "bPaginate":true,
@@ -23,8 +21,8 @@ $(document).ready(function(){
       }
     });
 
-
     populate();
+
 });
 
 
@@ -185,7 +183,7 @@ function submit() {
   var b_ids = "";
 
   if(a_num_rows == 0 && b_num_rows == 0) {
-    error("You must have at least one Genome in each table", "#SubmitError");
+    error("You must have at least one Genome in a table", "#SubmitError");
   }
 
   for(i = 0; i < a_num_rows; i++) {
@@ -208,40 +206,48 @@ function submit() {
   a_input.name="a";
   b_input.name="b";
 
-  a_input.value = a_ids;
-  b_input.value = b_ids;
+  if(a_num_rows =! 0) {
+    a_input.value = a_ids;
+    document.forms['form'].appendChild(a_input);
+  }
 
-  document.forms['form'].appendChild(a_input);
-  document.forms['form'].appendChild(b_input);
+  if(b_num_rows =! 0) {
+    b_input.value = b_ids;
+    document.forms['form'].appendChild(b_input);
+  }
 
-  // checkboxes 
-  var ava = $('#AvA').value;
-  var bvb = $('#BvB').value;
+
   var averageranking = $('#AverageRanking').value;
 
   ava_input = document.createElement("input");
+  avb_input = document.createElement("input");
   bvb_input = document.createElement("input");
   average_ranking_input = document.createElement("input");
 
   ava_input.type = 'hidden';
+  avb_input.type = 'hidden';
   bvb_input.type = 'hidden';
   average_ranking_input.type = 'hidden';
 
   ava_input.name="ava";
+  avb_input.name="avb";
   bvb_input.name="bvb";
   average_ranking_input.name="avgrank";
 
   ava_input.value = document.getElementById('AvA').checked;
+  avb_input.value = document.getElementById('AvB').checked;
   bvb_input.value = document.getElementById('BvB').checked;
   average_ranking_input.value = document.getElementById('AverageRanking').checked;
 
   document.forms['form'].appendChild(ava_input);
+  document.forms['form'].appendChild(avb_input);
   document.forms['form'].appendChild(bvb_input);
   document.forms['form'].appendChild(average_ranking_input);
 
-  document.getElementById("form").setAttribute("method", "post");
 
+  document.getElementById("form").setAttribute("method", "post");
   document.forms['form'].submit();
+
 }
 
 
