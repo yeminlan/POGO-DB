@@ -190,10 +190,12 @@ function submit() {
     return;
   }
 
-  if(document.getElementById('AvB').checked && (b_num_rows <= 1 || a_num_rows <= 1)) {
+  if(document.getElementById('AvB').checked &&
+    (b_num_rows == 0 || a_num_rows == 0)) {
     error("You need at least one genome in A and B", "#SubmitError");
     return;
   }
+
 
   for(i = 0; i < a_num_rows; i++) {
     a_ids = atable.fnGetData(i)[3] + "," + a_ids; 
