@@ -5,6 +5,11 @@ $(window).resize(function() {
 });
 
 $(document).ready(function(){
+    
+    cols = [];
+    for(var i = 5; i < dataColumns.length; i++){
+    cols.push(i);
+    }
 
     settings = {
     "bPaginate":true,
@@ -16,15 +21,42 @@ $(document).ready(function(){
     "sScrollY": "100%", 
     "bScrollCollapse": true,
     "sDom": 'T<"clear">lfrtip',
+    "oTableTools": {
+      "sSwfPath": "media/swf/copy_cvs_xls.swf",
+      "aButtons": [
+        {
+          "sExtends": "copy",
+          "mColumns": cols
+        },
+        {
+          "sExtends": "csv",
+          "mColumns": cols}]
+      }
     }
 
     dataTable = $('#data').dataTable(settings);
-    
+
+    if(marker_gene) {
+      avg = calculate_averages();
+      marker_table = $('#avg_table').dataTable(
+        {
+        "bPaginate": false,
+        "bFilter": false,
+        "aaData": avg,
+        "bSort": true,
+        "sDom": 'T<"clear">lfrtip',
+        "oTableTools": {
+          "sSwfPath": "media/swf/copy_cvs_xls.swf",
+          "aButtons": [ "copy", "csv" ]
+          }
+       }
+      );
+    }
+
     // Hide our id, and files, add fixed columns
     dataTable.fnSetColumnVis(2, false);
     dataTable.fnSetColumnVis(3, false);
     dataTable.fnSetColumnVis(4, false);
-    dataTable.fnSetColumnVis(dataTable.fnGetData(0).length - 1, false);
     
     new FixedColumns( dataTable, {"iLeftColumns": 2} );
 
@@ -48,7 +80,111 @@ $(document).ready(function(){
 
     // draw graph
     updateGraph();
+    // var a = $('#chart').jqplotToImageStr();
+    // console.log(a);
 });
+
+function calculate_averages() {
+  var ranking = [];
+  var comparison = [];
+  var i = 0;
+  var j = 0;
+
+  //check for nulls
+  for(j = 0; j < avg_data.length; j++) {
+    for(i = 0; i < avg_data[0].length; i++) {
+      if(avg_data[j][i] === null) {
+        avg_data.splice(j, 1);
+        break;
+      } 
+    }
+  }
+
+  //for each array turn it into a ranking
+  for(j = 0; j < avg_data.length; j++) {
+      comparison.push(avg_data[j].slice(-1)[0]);
+      var sorted = avg_data[j].slice(0, avg_data[j].length - 1).sort(function(a,b){return b-a})
+      var ranks = avg_data[j].slice(0, avg_data[j].length - 1).map(function(v){ return sorted.indexOf(v)+1 });
+      ranking.push(ranks);
+    }
+  
+  // average our three different 
+  var ava_arr = [];
+  var avb_arr = [];
+  var bvb_arr = [];
+  
+  for(j = 0; j < ranking.length; j++) {
+    if(comparison[j] === "ava") {
+      ava_arr.push(ranking[j]);  
+      continue;
+    }
+    if(comparison[j] === "avb") {
+      avb_arr.push(ranking[j]);  
+      continue;
+    }
+    if(comparison[j] === "bvb") {
+      bvb_arr.push(ranking[j]);  
+    }
+  }
+  
+  var ava_avg = [];
+  var avb_avg = [];
+  var bvb_avg = [];
+  var totals_arr = [];
+
+  var avgs_arr = [];
+
+  if(ava_arr.length > 0) {
+    
+    for(j = 0; j <ava_arr[0].length; j++) {
+      var total = 0;
+      for(i = 0; i < ava_arr.length; i++)
+        total = total + ava_arr[i][j];
+        
+      totals_arr[j] = total;
+      ava_avg.push((total / ava_arr.length).toFixed(2));
+    }
+    avgs_arr.push(ava_avg);
+  }
+
+  if(avb_arr.length > 0) {
+    // each marker gene
+    for(j = 0; j <avb_arr[0].length; j++) {
+      var total = 0;
+      // each genome pair
+      for(i = 0; i < avb_arr.length; i++)
+        total = total + avb_arr[i][j];
+      
+      avb_avg.push((total / avb_arr.length).toFixed(2));
+    }
+    avgs_arr.push(avb_avg);
+  }
+
+  if(bvb_arr.length > 0) {
+    for(j = 0; j <bvb_arr[0].length; j++) {
+      var total = 0;
+      for(i = 0; i < bvb_arr.length; i++)
+        total = total + bvb_arr[i][j];
+      
+      bvb_avg.push((total / bvb_arr.length).toFixed(2));
+    }
+    avgs_arr.push(bvb_avg);
+  }
+   
+
+  var ret = [];
+
+  for(i = 0; i < avg_data[0].length - 1; i++) {
+    var temp = [];
+    temp.push(marker_cols[i]);
+    for(j = 0; j < avgs_arr.length; j++) {
+      temp.push(avgs_arr[j][i]); 
+    }
+    ret.push(temp);
+  }
+
+  return ret;
+}
 
 function updateGraph() {
 
@@ -65,12 +201,17 @@ function updateGraph() {
   vselement = data[0].length - 1;
   for(i in data) { 
     if(data[i][x_val] !== null && data[i][y_val] !== null) {
-      if(data[i][vselement] === 'ava')
-        xy_arr_ava.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val])]);
-      if(data[i][vselement] === 'avb')
-        xy_arr_avb.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val])]);
-      if(data[i][vselement] === 'bvb')
-        xy_arr_bvb.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val])]);
+      if(data[i][vselement] === 'ava') { 
+        xy_arr_ava.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val]), data[i][0] + "<br>" + data[i][1] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
+      }
+      if(data[i][vselement] === 'avb') { 
+        xy_arr_avb.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val]), data[i][0] + "<br>" + data[i][1] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
+      }
+      if(data[i][vselement] === 'bvb') { 
+        xy_arr_bvb.push([parseFloat(data[i][x_val]),
+                         parseFloat(data[i][y_val]), 
+                         data[i][0] + "<br>" + data[i][1] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
+      }
     }  
   }
 
@@ -109,6 +250,7 @@ function updateGraph() {
       showLine:false,
       markerOptions: { size: 5 } 
       },
+
       {
       showLine:false,
       markerOptions: { size: 5 } 
@@ -131,12 +273,21 @@ function updateGraph() {
     },
     highlighter: {
     show: true,
-    sizeAdjust: 7.5
+    sizeAdjust: 7.5,
+    tooltipContentEditor : function(str, seriesIndex, pointIndex, jqplot) { console.log(seriesIndex + " " + pointIndex); return plot._plotData[seriesIndex][pointIndex][2]; }
     },
     cursor: {
-      show: false
+      show: true,
+      zoom: true
     }
   }
   );
 }
 
+function zoomOut() { 
+  plot.resetZoom();
+}
+
+function toImage() { 
+  plot.jqplotSaveImage();
+}
