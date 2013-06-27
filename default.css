@@ -12,7 +12,6 @@ body {
   background-color:#FFFFFF;
 }
 
-
 .centered {
   display:block;
   margin-left:auto; !Important;
@@ -32,6 +31,10 @@ body {
 
 .main {
   padding:1em;
+}
+
+.main img {
+  width: 100%;
 }
 
 .header {
