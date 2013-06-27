@@ -7,10 +7,11 @@ function query_db($con, $arr1, $arr2, $comp, &$data) {
   $select .= "Average_Amino_Acid_Identity as `Average AAI`, ";
   $select .= "d.16S_rRNA_gene_identify as `16S rRNA`, ";
   $select .= "d.Genomic_Fluidity as `Genomic Fluidity`, ";
-  $select .= "d.orthologs_criterion1 as `Orthologs (Criterion 1)`, ";
-  $select .= "d.orthologs_criterion2 as `Orthologs (Criterion 2)`,";
+  $select .= "d.orthologs_criterion1 as `Orthologs (1)`, ";
+  $select .= "d.orthologs_criterion2 as `Orthologs (2)`,";
   $select .= "ArgS, CdsA, CoaE, CpsG, DnaN, Efp, Exo, Ffh, FtsY, FusA, GlnS, GlyA, GroL, HisS, IleS, InfA, InfB, KsgA, LeuS, Map, MetG, NrdA, NusG, PepP, PheS, PheT, ProS, PyrG, RecA, RplA, RplB, RplC, RplD, RplE, RplF, RplJ, RplK, RplM, RplN, RplP, RplR, RplV, RplX, RpoA, RpoB, RpoC, RpsB, RpsC, RpsD, RpsE, RpsG, RpsH, RpsI, RpsJ, RpsK, RpsL, RpsM, RpsN, RpsO, RpsQ, RpsS,SecY, Sers, ThrS, Tmk, TopA, TrpS, TruB, TrxA, TrxB, TufB, TyrS, ValS, ";
-  $query = "SELECT " . $select . " '" . $comp . "' as vs FROM taxonomy t1, taxonomy t2, data d WHERE";
+  $query = "SELECT " . $select . " '" . $comp . "' as `Group Comparison` FROM taxonomy t1, taxonomy t2, data d WHERE";
+
 
   for($i = 0; $i < count($arr1); $i++) {
     for($j = 0; $j < count($arr2); $j++) {
