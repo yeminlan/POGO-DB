@@ -62,9 +62,10 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 
 <?php include 'header.php'; ?>
 <div class=main>
-<h1>Pairwise Identity Database</h1>
+<h1>P.O.G.O. db
+</h1>
 <p>
-Welcome to the Pairwise Identity Database.
+Database of Pairwise-comparisons Of Genomes and universal Orthologous genes 
 </p>
 <p>
 Select two sets of genomes to compare: 
@@ -131,7 +132,7 @@ Select two sets of genomes to compare:
   <input type="checkbox" id="AvA">Compare A to itself.
   <input type="checkbox" checked=checked id="AvB">Compare A to B.
   <input type="checkbox" id="BvB">Compare B to itself.
-  <input type="checkbox" id="AverageRanking">Average Ranking <sup><a href="">?</a> </sup>
+  <input type="checkbox" id="AverageRanking">Calculate Average Ranking <sup><a href="">?</a> </sup>
 </p>
 
 <p>
@@ -143,7 +144,7 @@ Select two sets of genomes to compare:
 </center>
 </div>
 </div>
-</div>
 <?php include 'footer.php';?>
+</div>
 </body>
 </html>
