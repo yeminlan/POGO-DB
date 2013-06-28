@@ -16,7 +16,7 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
   $taxonomy[] = $row;
 }
 
-$query = "SELECT distinct Genus FROM taxonomy;";
+$query = "SELECT distinct Genus FROM taxonomy order by Genus asc;";
 $result = mysqli_query($con, $query);
 $genus=array();
 
@@ -24,7 +24,7 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
   $genus[] = $row['Genus'];
 }
 
-$query = "SELECT distinct Species FROM taxonomy;";
+$query = "SELECT distinct Species FROM taxonomy order by Species asc;";
 $result = mysqli_query($con, $query);
 $species=array();
 
@@ -32,7 +32,7 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
   $species[] = $row['Species'];
 }
 
-$query = "SELECT distinct Genome FROM taxonomy;";
+$query = "SELECT distinct Genome FROM taxonomy order by Genome asc;";
 $result = mysqli_query($con, $query);
 $genome=array();
 
