@@ -176,13 +176,9 @@ if(isset($_POST["avgrank"]) && $_POST["avgrank"] === 'true') {
   <center>
     <h2> Average Rankings of Marker Genes </h2>
   </center>
-  <table class="display" id="avg_table"><thead><tr>
-    <script>
-      for(col in headers){
-        document.write("<th>" + headers[col] + "</th>");
-      }
-    </script>
-  </tr></thead></table><br>
+  <table class="display" id="avg_table">
+  </table><br>
+  <center><div id="avggenetext"></center>
   <?php
 }
 

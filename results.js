@@ -36,13 +36,29 @@ $(document).ready(function(){
 
     dataTable = $('#data').dataTable(settings);
 
-    if(marker_gene) {
+    marker_break: if(marker_gene) {
+      var table = document.getElementById("avg_table");
       avg = calculate_averages();
+
+      if(avg[2] == 1)  {
+        table.parentNode.removeChild(table);
+        var genediv = document.getElementById("avggenetext");
+        genediv.appendChild(document.createTextNode("Sorry, all of your marker gene's were null!"));
+        break  marker_break;
+      }
+
+      var head = table.createTHead();
+      var headrow = head.appendChild(document.createElement('tr'));
+      for(col in avg[1]){
+        var el = headrow.appendChild(document.createElement('th'));
+        el.appendChild(document.createTextNode(avg[1][col]));
+      }
+
       marker_table = $('#avg_table').dataTable(
         {
         "bPaginate": false,
         "bFilter": false,
-        "aaData": avg,
+        "aaData": avg[0],
         "bSort": true,
         "sDom": 'T<"clear">lfrtip',
         "oTableTools": {
@@ -76,7 +92,7 @@ $(document).ready(function(){
     }
     
     // have the x and y be different indexes by default
-    yselect.selectedIndex = 1;
+    xselect.selectedIndex = 1;
 
     // draw graph
     updateGraph();
@@ -90,16 +106,26 @@ function calculate_averages() {
   var i = 0;
   var j = 0;
 
+  no_comparisons = avg_data[0].length;
+  null_arr = [];
+
   //check for nulls
   for(j = 0; j < avg_data.length; j++) {
-    for(i = 0; i < avg_data[0].length; i++) {
+    for(i = 0; i < no_comparisons; i++) {
       if(avg_data[j][i] === null) {
-        avg_data.splice(j, 1);
+        null_arr.push(j);
         break;
       } 
     }
   }
 
+  for(i = (null_arr.length - 1) ; i > -1; i--) {
+    avg_data.splice(null_arr[i], 1);
+  }
+
+  if(avg_data.length == 1) {
+    return [null, null, 1];
+  }
   //for each array turn it into a ranking
   for(j = 0; j < avg_data.length; j++) {
       comparison.push(avg_data[j].slice(-1)[0]);
@@ -131,8 +157,10 @@ function calculate_averages() {
   var avb_avg = [];
   var bvb_avg = [];
   var totals_arr = [];
-
+  var columns_arr = [];
   var avgs_arr = [];
+
+  columns_arr.push("Marker Gene");
 
   if(ava_arr.length > 0) {
     
@@ -145,6 +173,7 @@ function calculate_averages() {
       ava_avg.push((total / ava_arr.length).toFixed(2));
     }
     avgs_arr.push(ava_avg);
+    columns_arr.push("A vs. A (" + ava_arr.length + ")");
   }
 
   if(avb_arr.length > 0) {
@@ -158,6 +187,7 @@ function calculate_averages() {
       avb_avg.push((total / avb_arr.length).toFixed(2));
     }
     avgs_arr.push(avb_avg);
+    columns_arr.push("A vs. B (" + avb_arr.length + ")");
   }
 
   if(bvb_arr.length > 0) {
@@ -169,6 +199,7 @@ function calculate_averages() {
       bvb_avg.push((total / bvb_arr.length).toFixed(2));
     }
     avgs_arr.push(bvb_avg);
+    columns_arr.push("B vs. B (" + bvb_arr.length + ")");
   }
    
 
@@ -183,7 +214,7 @@ function calculate_averages() {
     ret.push(temp);
   }
 
-  return ret;
+  return [ret, columns_arr, 0];
 }
 
 function updateGraph() {
@@ -274,7 +305,7 @@ function updateGraph() {
     highlighter: {
     show: true,
     sizeAdjust: 7.5,
-    tooltipContentEditor : function(str, seriesIndex, pointIndex, jqplot) { console.log(seriesIndex + " " + pointIndex); return plot._plotData[seriesIndex][pointIndex][2]; }
+    tooltipContentEditor : function(str, seriesIndex, pointIndex, jqplot) { console.log(seriesIndex + " " + pointIndex); return plot.series[seriesIndex]._plotData[pointIndex][2]; }
     },
     cursor: {
       show: true,
