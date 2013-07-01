@@ -1,8 +1,23 @@
 var plot;
+var Ids = [];
+var dataTable;
 
 $(window).resize(function() {
     plot.replot( { resetAxes: true } );
 });
+
+
+$('input[type=checkbox]').live('click', function () {
+
+    if( $.inArray( this.id, Ids ) == -1) {
+      Ids.push( this.id ); 
+    }
+    else {
+      var idx = Ids.indexOf( this.id );
+      Ids.splice(idx,1);
+    }                           
+
+    });
 
 $(document).ready(function(){
     
@@ -12,13 +27,11 @@ $(document).ready(function(){
     }
 
     settings = {
-    "bPaginate":true,
     "aaData": data,
-    "bFilter":false,
-    "bSort": true,
-    "bAutoWidth": false,
     "sScrollX": "100%",
     "sScrollY": "100%", 
+    "bSort": true,
+    "bAutoWidth": false,
     "bScrollCollapse": true,
     "sDom": 'T<"clear">lfrtip',
     "oTableTools": {
@@ -31,7 +44,16 @@ $(document).ready(function(){
         {
           "sExtends": "csv",
           "mColumns": cols}]
-      }
+      },
+    "aoColumnDefs": [ 
+    {
+      "fnRender": function ( oObj ) {
+        return '<input type=\"checkbox\" id="'+ oObj.aData[0] +'" name="sel"> ';
+      },
+      "sWidth": "10px", 
+      "bSortable" : false,
+      "aTargets": [ 0 ]
+    }]                   
     }
 
     dataTable = $('#data').dataTable(settings);
@@ -70,12 +92,10 @@ $(document).ready(function(){
     }
 
     // Hide our id, and files, add fixed columns
-    dataTable.fnSetColumnVis(2, false);
     dataTable.fnSetColumnVis(3, false);
     dataTable.fnSetColumnVis(4, false);
     
-    new FixedColumns( dataTable, {"iLeftColumns": 2} );
-
+    // new FixedColumns( dataTable, {"iLeftColumns": 3, });
     yselect = document.getElementById("y");
     xselect = document.getElementById("x");
     
@@ -98,8 +118,36 @@ $(document).ready(function(){
     updateGraph();
     // var a = $('#chart').jqplotToImageStr();
     // console.log(a);
+    
 });
 
+function submitIds() {
+  
+
+  if(Ids.length != 0) {
+    form = document.getElementById("submitform");
+    form.setAttribute("method", "post");
+
+    input = document.createElement("input");
+    input.value = Ids;
+    input.name="ids";
+    input.type = 'hidden';
+
+    form.appendChild(input);
+    form.submit();
+  } else {
+    alert("Please select one or more comparions to download");
+  }
+}
+
+function selectCB(val) {
+  form = document.getElementById("submitform");
+  for (var i = 0; i < form.elements.length; i++ ) {
+    if (form.elements[i].type == 'checkbox') {
+      form.elements[i].checked == val;
+    }
+  }
+}
 function calculate_averages() {
   var ranking = [];
   var comparison = [];
@@ -233,15 +281,15 @@ function updateGraph() {
   for(i in data) { 
     if(data[i][x_val] !== null && data[i][y_val] !== null) {
       if(data[i][vselement] === 'ava') { 
-        xy_arr_ava.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val]), data[i][0] + "<br>" + data[i][1] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
+        xy_arr_ava.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val]), data[i][1] + "<br>" + data[i][2] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
       }
       if(data[i][vselement] === 'avb') { 
-        xy_arr_avb.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val]), data[i][0] + "<br>" + data[i][1] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
+        xy_arr_avb.push([parseFloat(data[i][x_val]), parseFloat(data[i][y_val]), data[i][1] + "<br>" + data[i][2] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
       }
       if(data[i][vselement] === 'bvb') { 
         xy_arr_bvb.push([parseFloat(data[i][x_val]),
                          parseFloat(data[i][y_val]), 
-                         data[i][0] + "<br>" + data[i][1] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
+                         data[i][1] + "<br>" + data[i][2] + "<br>(" + data[i][x_val] + ", " + data[i][y_val] + ")"]);
       }
     }  
   }

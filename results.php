@@ -6,6 +6,7 @@ include 'functions.php';
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
+$i = 0;
 $data=array();
 $data_columns = array();
 
@@ -35,10 +36,16 @@ if( $_POST["bvb"] === 'true') {
   $result = query_db($con, $b_array, $b_array, "bvb", $data);  
 }
 
+// for($i = 0; $i < count($data); $i++) {
+//   $data[$i][0] = "<input type='checkbox' name='ids[]' value=" . $data[$i][0] . ">";
+// 
+// }
+
 // Get our data columns
   while($row = mysqli_fetch_field($result)) {
     $data_columns[] = $row->name;
   }
+
 ?>
 
 <?php
@@ -120,13 +127,20 @@ else { ?>
   </div>
   </center>
 
-  <table class="display" id="data"><thead><tr>
+  <table class="display" id="data">
+  <thead><tr>
     <script>
       for(col in dataColumns){
         document.write("<th>" + dataColumns[col] + "</th>");
       }
     </script>
   </tr></thead></table>
+  <form id="submitform" action=download.php>
+  <button class='buttons'>Select all comparisons</button>
+  <button class='buttons' onClick="submitIds()">Download BLAST files</button> 
+  </form>
+
+ 
 <?php
 
 if(isset($_POST["avgrank"]) && $_POST["avgrank"] === 'true') {
