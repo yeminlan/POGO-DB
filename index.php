@@ -132,7 +132,8 @@ Select two sets of genomes to compare:
   <input type="checkbox" id="AvA">Compare A to itself.
   <input type="checkbox" checked=checked id="AvB">Compare A to B.
   <input type="checkbox" id="BvB">Compare B to itself.
-  <input type="checkbox" id="AverageRanking">Calculate Average Ranking <sup><a href="">?</a> </sup>
+  <input type="checkbox" id="AverageRanking">Calculate Average Ranking <sup><a
+  href="about.php#averageranking">?</a> </sup>
 </p>
 
 <p>
