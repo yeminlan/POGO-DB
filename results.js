@@ -214,41 +214,34 @@ function calculate_averages() {
     
   }
   
-  var ava_avg = [];
-  var avb_avg = [];
-  var bvb_avg = [];
-  var all_avg = [];
-
   // an array of our average arrays
   var avgs_arr = [];
-
   // our columns
   var columns_arr = [];
 
   columns_arr.push("Marker Gene");
 
   if(ava_arr.length > 0) {
-    ava_avg = averageRankings(ava_arr); 
-    avgs_arr.push(ava_avg);
+    avgs_arr.push(averageRankings(ava_arr));
     columns_arr.push("A vs. A (" + ava_arr.length + " Genome Pairs)");
   }
 
   if(avb_arr.length > 0) {
-    avb_avg = averageRankings(avb_arr);
-    avgs_arr.push(avb_avg);
+    avgs_arr.push(averageRankings(avb_arr));
     columns_arr.push("A vs. B (" + avb_arr.length + " Genome Pairs)");
   }
 
   if(bvb_arr.length > 0) {
-    bvb_avg = averageRankings(bvb_arr);
-    avgs_arr.push(bvb_avg);
+   
+    avgs_arr.push(averageRankings(bvb_arr));
     columns_arr.push("B vs. B (" + bvb_arr.length + " Genome Pairs)");
   }
    
   // average all
-  all_avg = averageRankings(ranking);
-  avgs_arr.push(all_avg);
-  columns_arr.push("All (" + ranking.length + " Genome Pairs)");
+  if(avgs_arr.length > 1) {
+    avgs_arr.push(averageRankings(ranking));
+    columns_arr.push("All (" + ranking.length + " Genome Pairs)");
+  }
 
   // Create our output array, it's a bit like a transpose
   var ret = [];
