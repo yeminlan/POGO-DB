@@ -9,15 +9,15 @@ $(window).resize(function() {
 
 $('input[type=checkbox]').live('click', function () {
 
-    if( $.inArray( this.id, Ids ) == -1) {
-      Ids.push( this.id ); 
+    if($.inArray(this.id, Ids) == -1) {
+      Ids.push(this.id); 
     }
     else {
-      var idx = Ids.indexOf( this.id );
+      var idx = Ids.indexOf(this.id);
       Ids.splice(idx,1);
     }                           
 
-    });
+});
 
 $(document).ready(function(){
     
@@ -164,7 +164,7 @@ function calculate_averages() {
   no_comparisons = avg_data[0].length;
   null_arr = [];
 
-  //check for nulls
+  //check for nulls and remove them
   for(j = 0; j < avg_data.length; j++) {
     for(i = 0; i < no_comparisons; i++) {
       if(avg_data[j][i] === null) {
@@ -178,88 +178,80 @@ function calculate_averages() {
     avg_data.splice(null_arr[i], 1);
   }
 
+  // if we only have one row (which would be our marker gene list, then exit with a failure)
   if(avg_data.length == 1) {
     return [null, null, 1];
   }
+
   //for each array turn it into a ranking
-  for(j = 0; j < avg_data.length; j++) {
+  for(j = 0; j < avg_data.length - 1; j++) {
       comparison.push(avg_data[j].slice(-1)[0]);
       var sorted = avg_data[j].slice(0, avg_data[j].length - 1).sort(function(a,b){return b-a})
       var ranks = avg_data[j].slice(0, avg_data[j].length - 1).map(function(v){ return sorted.indexOf(v)+1 });
       ranking.push(ranks);
-    }
-  
+  }
+
   // average our three different 
   var ava_arr = [];
   var avb_arr = [];
   var bvb_arr = [];
+  var all_arr = [];
   
   for(j = 0; j < ranking.length; j++) {
+
     if(comparison[j] === "ava") {
       ava_arr.push(ranking[j]);  
-      continue;
     }
-    if(comparison[j] === "avb") {
+    else if(comparison[j] === "avb") {
       avb_arr.push(ranking[j]);  
-      continue;
     }
-    if(comparison[j] === "bvb") {
+    else if(comparison[j] === "bvb") {
       bvb_arr.push(ranking[j]);  
     }
+    else {
+      console.log(comparison[j]);
+    }
+    
   }
   
   var ava_avg = [];
   var avb_avg = [];
   var bvb_avg = [];
-  var totals_arr = [];
-  var columns_arr = [];
+  var all_avg = [];
+
+  // an array of our average arrays
   var avgs_arr = [];
+
+  // our columns
+  var columns_arr = [];
 
   columns_arr.push("Marker Gene");
 
   if(ava_arr.length > 0) {
-    
-    for(j = 0; j <ava_arr[0].length; j++) {
-      var total = 0;
-      for(i = 0; i < ava_arr.length; i++)
-        total = total + ava_arr[i][j];
-        
-      totals_arr[j] = total;
-      ava_avg.push((total / ava_arr.length).toFixed(2));
-    }
+    ava_avg = averageRankings(ava_arr); 
     avgs_arr.push(ava_avg);
     columns_arr.push("A vs. A (" + ava_arr.length + " Genome Pairs)");
   }
 
   if(avb_arr.length > 0) {
-    // each marker gene
-    for(j = 0; j <avb_arr[0].length; j++) {
-      var total = 0;
-      // each genome pair
-      for(i = 0; i < avb_arr.length; i++)
-        total = total + avb_arr[i][j];
-      
-      avb_avg.push((total / avb_arr.length).toFixed(2));
-    }
+    avb_avg = averageRankings(avb_arr);
     avgs_arr.push(avb_avg);
     columns_arr.push("A vs. B (" + avb_arr.length + " Genome Pairs)");
   }
 
   if(bvb_arr.length > 0) {
-    for(j = 0; j <bvb_arr[0].length; j++) {
-      var total = 0;
-      for(i = 0; i < bvb_arr.length; i++)
-        total = total + bvb_arr[i][j];
-      
-      bvb_avg.push((total / bvb_arr.length).toFixed(2));
-    }
+    bvb_avg = averageRankings(bvb_arr);
     avgs_arr.push(bvb_avg);
     columns_arr.push("B vs. B (" + bvb_arr.length + " Genome Pairs)");
   }
    
+  // average all
+  all_avg = averageRankings(ranking);
+  avgs_arr.push(all_avg);
+  columns_arr.push("All (" + ranking.length + " Genome Pairs)");
 
+  // Create our output array, it's a bit like a transpose
   var ret = [];
-
   for(i = 0; i < avg_data[0].length - 1; i++) {
     var temp = [];
     temp.push(marker_cols[i]);
@@ -272,6 +264,24 @@ function calculate_averages() {
   return [ret, columns_arr, 0];
 }
 
+function averageRankings(array) {
+  var i = 0;
+  var j = 0;
+  array_avg = [];
+
+  for(j = 0; j < array[0].length; j++) {
+    var total = 0;
+    for(i = 0; i < array.length; i++)
+      total = total + array[i][j];
+
+  console.log(total);
+
+  array_avg.push((total / array.length).toFixed(2));
+  }
+  return array_avg;
+}
+  
+    
 function updateGraph() {
 
   x = document.getElementById("x");
