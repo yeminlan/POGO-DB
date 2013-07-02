@@ -7,7 +7,8 @@ error_reporting(E_ALL);
 
 if(isset($_POST["ids"])) {
 
-  if($_POST["ids"][0] === "all") {
+  $ids = explode(",", $_POST["ids"]);
+  if($ids[0] === "all") {
     header("Location: downloads/all.tar.bz2");
 
   }
@@ -15,8 +16,8 @@ if(isset($_POST["ids"])) {
   $query = "SELECT id, file1v2, file2v1, genome_name1, genome_name2 FROM data WHERE ";
 
   $i = 0;
-  for($i = 0; $i < count($_POST["ids"]); $i++) {
-    $query .= "id=" . $_POST["ids"][$i] . " OR ";
+  for($i = 0; $i < count($ids); $i++) {
+    $query .= "id=" . $ids[$i] . " OR ";
   }
 
   $query = substr($query, 0, -3);
@@ -45,26 +46,28 @@ if(isset($_POST["ids"])) {
     $command .= " " . $csv_file;
 
     if($tar_handle = popen($command, 'r')) {
+      header("Content-Type: application/x-tar");
+      header("Content-disposition: attachment; filename=blast_files.tar");
 
-    header("Content-Type: application/x-tar");
-    header("Content-disposition: attachment; filename=blast_files.tar");
+      $bufsize = 4096;
+      $buffer = '';
+      while( !feof($tar_handle) ) {
+        $buffer = fread($tar_handle, $bufsize);
+        echo $buffer;
+      }
 
-
-    $bufsize = 4096;
-    $buffer = '';
-    while( !feof($tar_handle) ) {
-      $buffer = fread($tar_handle, $bufsize);
-      echo $buffer;
+      pclose($tar_handle);
+      unlink($csv_file);
     }
-
-    pclose($tar_handle);
-    unlink($csv_file);
-    } else {
+    else {
+      echo $command . "<br>";
       echo "something went wrong";
     }
-  } else {
+  } 
+  else {
+    echo $query . "<br>";
     echo "one of your requested ID's does not exist";
-    print_r($_POST["ids"]);
+    print_r($ids);
   }
 }
 ?>

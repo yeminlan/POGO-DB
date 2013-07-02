@@ -92,6 +92,7 @@ else { ?>
     <script type="text/javascript" src="lib/FixedColumns.min.js"></script>
 
     <script type="text/javascript" src="lib/jqplot/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="lib/jqplot.toImage.js"></script>
     <script type="text/javascript" src="lib/jqplot/plugins/jqplot.highlighter.min.js"></script>
     <script type="text/javascript" src="lib/jqplot/plugins/jqplot.cursor.min.js"></script>
     <script type="text/javascript" src="results.js"></script>
@@ -135,10 +136,12 @@ else { ?>
       }
     </script>
   </tr></thead></table>
-  <form id="submitform" action=download.php>
-  <button class='buttons'>Select all comparisons</button>
-  <button class='buttons' onClick="submitIds()">Download BLAST files</button> 
+  <p>
+  <!-- <button type="button" class='buttons' onClick="selectAll">Select all</button>--!>
+  <form id="submitform">
+  <button type="button" class='buttons' onClick="submitIds()">Download Selected</button> 
   </form>
+  </p>
 
  
 <?php

@@ -122,21 +122,28 @@ $(document).ready(function(){
 });
 
 function submitIds() {
+  var i = 0;
   
-
   if(Ids.length != 0) {
     form = document.getElementById("submitform");
     form.setAttribute("method", "post");
+    form.setAttribute("action", "download.php");
 
+    var id_string = Ids[0];
+    for(i = 1; i < Ids.length; i++) {
+      id_string += "," + Ids[i];
+    }
     input = document.createElement("input");
-    input.value = Ids;
+    input.value = id_string;
     input.name="ids";
     input.type = 'hidden';
 
     form.appendChild(input);
     form.submit();
-  } else {
+  }
+  else {
     alert("Please select one or more comparions to download");
+    return false;
   }
 }
 
@@ -221,7 +228,7 @@ function calculate_averages() {
       ava_avg.push((total / ava_arr.length).toFixed(2));
     }
     avgs_arr.push(ava_avg);
-    columns_arr.push("A vs. A (" + ava_arr.length + ")");
+    columns_arr.push("A vs. A (" + ava_arr.length + " Genome Pairs)");
   }
 
   if(avb_arr.length > 0) {
@@ -235,7 +242,7 @@ function calculate_averages() {
       avb_avg.push((total / avb_arr.length).toFixed(2));
     }
     avgs_arr.push(avb_avg);
-    columns_arr.push("A vs. B (" + avb_arr.length + ")");
+    columns_arr.push("A vs. B (" + avb_arr.length + " Genome Pairs)");
   }
 
   if(bvb_arr.length > 0) {
@@ -247,7 +254,7 @@ function calculate_averages() {
       bvb_avg.push((total / bvb_arr.length).toFixed(2));
     }
     avgs_arr.push(bvb_avg);
-    columns_arr.push("B vs. B (" + bvb_arr.length + ")");
+    columns_arr.push("B vs. B (" + bvb_arr.length + " Genome Pairs)");
   }
    
 
@@ -318,7 +325,7 @@ function updateGraph() {
   $('#chart').empty();
   plot = $.jqplot('chart', array_of_arrays, 
   { 
-    seriesColors: ["#A60400", "9999FF", "#000"],
+    seriesColors: ["#A60400", "#9999FF", "#000"],
     title: x.options[x.selectedIndex].text + " vs. " + y.options[y.selectedIndex].text,
     legend: {
       show:label_show,
@@ -368,5 +375,7 @@ function zoomOut() {
 }
 
 function toImage() { 
-  plot.jqplotSaveImage();
+  var image = $("#chart").jqplotToImageStr({});
+
+  window.open(image, '_blank');
 }
