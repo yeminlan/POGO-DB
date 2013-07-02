@@ -10,4 +10,4 @@ CREATE TABLE `taxonomy` (
   `Genus` varchar(256) DEFAULT NULL,
   `Species` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`idSpecies`)
-) ENGINE=InnoDB AUTO_INCREMENT=2015 DEFAULT CHARSET=big5$$
+) ENGINE=InnoDB DEFAULT CHARSET=big5$$
