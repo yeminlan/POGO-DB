@@ -30,7 +30,7 @@ then add the entire species “Escherichia coli” to group A. In such cases, we
 will only keep a unique list of the genomes in a group. POGO-DB also allows
 users to add a genome to both group A and group B, however, the comparison
 between exactly the same genome will not show up (since all metrics will be 100%
-similar when comparing genome to itself). If users want to compare genomes
+similar when comparing a genome to itself). If users want to compare genomes
 pairwisely within a group of genomes, say a species or genus, they can either
 add the same genomes to both group A and B for comparison, or add them only to
 group A and select “Compare A to itself” before submitting the query.
@@ -106,7 +106,7 @@ provide information on marker gene selections for finer taxonomic levels, while
 many known marker genes (primarily the 16S rRNA gene) already provide
 satisfactory distinction at higher taxonomic levels.  To view which pairs of
 genomes are included in the database and which are not, please download the 16S
-rRNA percent identity table of all genomes pairwisely here <a href="/data/pogo_db/POGODB_16S_rRNA_identity.csv"></a>
+rRNA percent identity table of all genomes pairwisely here <a href="/download/POGODB_16S_rRNA_identity.csv.bz2">POGODB_16S_rRNA_identity.csv.bz2</a>
 </p>
 
 
@@ -117,7 +117,7 @@ The search time will increase exponentially to the number of genomes queried.
 Therefore, we encourage users to add genomes by species or genera to the query.
 For people who are interested in the comparison between more or all of the
 genome pairs, we encourage them to acquire all the information in the database
-<a href="/data/pogo_db/POGODB_all_genome_pairs_identities.csv">here</a>, or view some of the all genomes vs. all genomes
+ or view some of the all genomes vs. all genomes
 results on our <a href="about.php#allvsall">about page</a>.
 </p>
 
@@ -126,9 +126,9 @@ results on our <a href="about.php#allvsall">about page</a>.
 <p>
 Yes. In addition to the download link we provided every time for the selected
 genomes in one query, users can acquire the entire database including both the
-identity information [all_genome_pairs.csv] and the raw BLAST output files
-(please link to the download of all BLAST results). We encourage users to do so
-when they are interested in a large amount of genome pairwise comparisons.  
+identity information (<a href="/download/POGODB_all_genome_pairs_identities.csv.bz2">POGODB_all_genome_pairs_identities.csv.bz2</a>),
+and the all of the BLAST output files (<a href="download/All.tar">All.tar</a>). We encourage users to do so when they are
+interested in a large amount of genome pairwise comparisons.  
 </p>
 
 <a name="9"></a>
@@ -138,11 +138,14 @@ Yes. In addition to the download link we provided for the queried genome pairs,
 we also allow users to download the raw BLAST output files for all pairs of
 genomes we provided. This is in fact one of the major reasons we built this
 database: to save people from the massive computation time of BLAST-ing genomes
-against genomes. The files can be acquired here (please link to the download of
-all BLAST results). It should be noted that we have BLAST results for a total of
+against genomes. It should be noted that we have BLAST results for a total of
 717,861 pairs of genomes, bi-directionally.  Therefore, the final output takes
-approximately 500G’s storage (tar.gz compressed) and might take a long time to
+approximately 500G’s storage (bz2 compressed) and will take a long time to
 download. 
+<p>
+<a href="download/all.tar">All.tar (~500GB)</a>
+</p>
+
 </p>
 
 </div>
