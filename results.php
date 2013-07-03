@@ -85,16 +85,17 @@ else { ?>
     <link rel="stylesheet" type="text/css" href="default.css">
     <link rel="stylesheet" type="text/css" href="results.css">
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="media/js/TableTools.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" src="media/js/TableTools.min.js"></script>
     <script type="text/javascript" src="media/js/ZeroClipboard.js"></script>
     <script type="text/javascript" src="lib/FixedColumns.min.js"></script>
 
     <script type="text/javascript" src="lib/jqplot/jquery.jqplot.min.js"></script>
-    <script type="text/javascript" src="lib/jqplot.toImage.js"></script>
     <script type="text/javascript" src="lib/jqplot/plugins/jqplot.highlighter.min.js"></script>
     <script type="text/javascript" src="lib/jqplot/plugins/jqplot.cursor.min.js"></script>
+
     <script type="text/javascript" src="results.js"></script>
 
     <script>
@@ -137,7 +138,7 @@ else { ?>
     </script>
   </tr></thead></table>
   <p>
-  <!-- <button type="button" class='buttons' onClick="selectAll">Select all</button>--!>
+  <!-- <button type="button" class='buttons' onClick="selectAll">Select all</button> --!>
   <form id="submitform">
   <button type="button" class='buttons' onClick="submitIds()">Download Selected</button> 
   </form>
