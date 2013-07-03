@@ -31,6 +31,7 @@ $(document).ready(function(){
     "sScrollX": "100%",
     "sScrollY": "100%", 
     "bSort": true,
+    "bDeferRender": true,
     "bAutoWidth": false,
     "bScrollCollapse": true,
     "sDom": 'T<"clear">lfrtip',
@@ -82,6 +83,8 @@ $(document).ready(function(){
         "bFilter": false,
         "aaData": avg[0],
         "bSort": true,
+        "bInfo": false,
+        "bDeferRender": true,
         "sDom": 'T<"clear">lfrtip',
         "oTableTools": {
           "sSwfPath": "media/swf/copy_cvs_xls.swf",
@@ -116,8 +119,6 @@ $(document).ready(function(){
 
     // draw graph
     updateGraph();
-    // var a = $('#chart').jqplotToImageStr();
-    // console.log(a);
     
 });
 
@@ -162,9 +163,10 @@ function calculate_averages() {
   var j = 0;
 
   no_comparisons = avg_data[0].length;
-  null_arr = [];
 
   //check for nulls and remove them
+  null_arr = [];
+
   for(j = 0; j < avg_data.length; j++) {
     for(i = 0; i < no_comparisons; i++) {
       if(avg_data[j][i] === null) {
@@ -197,6 +199,7 @@ function calculate_averages() {
   var bvb_arr = [];
   var all_arr = [];
   
+  // populate our arrays with different comparisons
   for(j = 0; j < ranking.length; j++) {
 
     if(comparison[j] === "ava") {
@@ -208,10 +211,6 @@ function calculate_averages() {
     else if(comparison[j] === "bvb") {
       bvb_arr.push(ranking[j]);  
     }
-    else {
-      console.log(comparison[j]);
-    }
-    
   }
   
   // an array of our average arrays
@@ -221,6 +220,7 @@ function calculate_averages() {
 
   columns_arr.push("Marker Gene");
 
+  // average and return our average from our differnt comparison arrays
   if(ava_arr.length > 0) {
     avgs_arr.push(averageRankings(ava_arr));
     columns_arr.push("A vs. A (" + ava_arr.length + " Genome Pairs)");
@@ -266,8 +266,6 @@ function averageRankings(array) {
     var total = 0;
     for(i = 0; i < array.length; i++)
       total = total + array[i][j];
-
-  console.log(total);
 
   array_avg.push((total / array.length).toFixed(2));
   }
@@ -363,7 +361,7 @@ function updateGraph() {
     highlighter: {
     show: true,
     sizeAdjust: 7.5,
-    tooltipContentEditor : function(str, seriesIndex, pointIndex, jqplot) { console.log(seriesIndex + " " + pointIndex); return plot.series[seriesIndex]._plotData[pointIndex][2]; }
+    tooltipContentEditor : function(str, seriesIndex, pointIndex, jqplot) { return plot.series[seriesIndex]._plotData[pointIndex][2]; }
     },
     cursor: {
       show: true,
