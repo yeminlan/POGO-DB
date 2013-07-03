@@ -140,10 +140,10 @@ genomes we provided. This is in fact one of the major reasons we built this
 database: to save people from the massive computation time of BLAST-ing genomes
 against genomes. It should be noted that we have BLAST results for a total of
 717,861 pairs of genomes, bi-directionally.  Therefore, the final output takes
-approximately 500G’s storage (bz2 compressed) and will take a long time to
+approximately 665G’s storage (bz2 compressed) and will take a long time to
 download. 
 <p>
-<a href="download/all.tar">All.tar (~500GB)</a>
+<a href="download/all.tar">All.tar (~665GB)</a>
 </p>
 
 </p>

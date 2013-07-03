@@ -103,15 +103,23 @@ $(document).ready(function(){
     xselect = document.getElementById("x");
     
     // populate our dropdown box
+    
     for(var i = 5; i < dataColumns.length - 1; i++){
-        var o1 = document.createElement("option");
-        var o2 = document.createElement("option");
-        o1.text = dataColumns[i];
-        o2.text = dataColumns[i];
-        o1.value = i;
-        o2.value = i;
-        xselect.add(o1, null);
-        yselect.add(o2, null);
+        var option = document.createElement("option");
+        if(dataColumns[i] === "Average AAI" || 
+           dataColumns[i] === "Orthologs (1)" ||
+           dataColumns[i] === "Orthologs (2)" ||
+           dataColumns[i] === "Genomic Fluidity")
+        {
+          option.text = dataColumns[i];
+        }
+        else {  
+          option.text = dataColumns[i] + " Identity";
+        }
+
+        option.value = i;
+        xselect.add(option, null);
+        yselect.add(option.cloneNode(true), null);
     }
     
     // have the x and y be different indexes by default

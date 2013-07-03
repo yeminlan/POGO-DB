@@ -8,14 +8,26 @@
   text-align:left;
 } 
 
-.ava {
-  
+table.display tr.even.row_ava td {
+  background-color: #B0BED9;
 }
 
-.avb {
-
+table.display tr.odd.row_ava  td {
+  background-color: #9FAFD1;
 }
 
-.bvb {
+table.display tr.even.row_avb td {
+  background-color: #B0BED9;
+}
 
+table.display tr.odd.row_avb  td {
+  background-color: #9FAFD1;
+}
+
+table.display tr.even.row_bvb td {
+  background-color: #B0BED9;
+}
+
+table.display tr.odd.row_bvb  td {
+  background-color: #9FAFD1;
 }
