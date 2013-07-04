@@ -1,15 +1,19 @@
 <?php
-
 include 'login.php';
 include 'functions.php';
+include 'time.php';
 
 ini_set('display_errors', 'On');
+ini_set('memory_limit', '512M');
 error_reporting(E_ALL);
 
 $i = 0;
 $data=array();
 $data_columns = array();
-
+?>
+<!DOCTYPE html>
+<div id="load">
+<?php
 // if A and B aren't set, go back to our homepage, someone didn't query us correctly
 if(!isset($_POST["a"]) && !isset($_POST["b"])) {
   header("Location: index.php");
@@ -23,29 +27,39 @@ if(isset($_POST["b"])) {
   $b_array = explode(",", $_POST["b"]);
 }
 
+$timea = microtime(true);
 if( $_POST["ava"] === 'true') {
+  ?>
+  <div id="ava_load" style="display:inline"></div><div id="rows" style="display:inline"> AvA rows processed.<br></div>
+  <?php
   $result = query_db($con, $a_array, $a_array, "ava", $data );  
 }
 
 if( $_POST["avb"] === 'true') {
+  ?>
+  <div id="avb_load" style="display:inline"></div><div id="rows" style="display:inline"> AvB rows processed.<br></div>
+  <?php
   $result = query_db($con, $a_array, $b_array, "avb", $data);  
 }
 
 
 if( $_POST["bvb"] === 'true') {
+  ?>
+  <div id="bvb_load" style="display:inline"></div><div id="rows" style="display:inline"> BvB rows processed.<br></div>
+  <?php
   $result = query_db($con, $b_array, $b_array, "bvb", $data);  
 }
 
-// for($i = 0; $i < count($data); $i++) {
-//   $data[$i][0] = "<input type='checkbox' name='ids[]' value=" . $data[$i][0] . ">";
-// 
-// }
+?>
 
+<?php
 // Get our data columns
   while($row = mysqli_fetch_field($result)) {
     $data_columns[] = $row->name;
   }
-
+  $timeb = microtime(true);
+  $time = $timeb - $timea;
+  echo "<div id=time>time_elapsed:" . $time . "\n</div></div>";
 ?>
 
 <?php
