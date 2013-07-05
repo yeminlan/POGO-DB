@@ -20,9 +20,10 @@ $('input[type=checkbox]').live('click', function () {
 });
 
 $(document).ready(function(){
-    
 
     $("#load").hide();
+
+    // create our columns array
     cols = [2, 3];
     for(var i = 5; i < dataColumns.length; i++){
     cols.push(i);
@@ -56,7 +57,10 @@ $(document).ready(function(){
       "sWidth": "10px", 
       "bSortable" : false,
       "aTargets": [ 0 ]
-    }]                   
+    }],
+    "fnDrawCallback": function( oSettings) {
+      apply_comparison_class(); }
+      
     }
 
     dataTable = $('#data').dataTable(settings);
@@ -131,6 +135,14 @@ $(document).ready(function(){
     updateGraph();
     
 });
+
+function apply_comparison_class() {
+  rows = $("#data").dataTable().fnGetNodes();
+  for(var i = 0; i < rows.length; i++) {
+    var col = rows[i].childNodes[rows[0].childNodes.length - 1];
+    $(col.parentNode).addClass("row_" + col.innerHTML);
+  }
+}
 
 function submitIds() {
   var i = 0;
@@ -317,26 +329,30 @@ function updateGraph() {
   label_arr = []; 
   array_of_arrays = [];
   label_show = true;
+  color_arr= [];
 
   if(xy_arr_ava.length > 0) {
     label_arr.push("A vs. A");
     array_of_arrays.push(xy_arr_ava);
+    color_arr.push("#A60400");
   }
 
   if(xy_arr_avb.length > 0)  {
     label_arr.push("A vs. B");
     array_of_arrays.push(xy_arr_avb);
+    color_arr.push("#99F");
   }
 
   if(xy_arr_bvb.length > 0)  {
     label_arr.push("B vs. B");
     array_of_arrays.push(xy_arr_bvb);
+    color_arr.push("#000");
   }
 
   $('#chart').empty();
   plot = $.jqplot('chart', array_of_arrays, 
   { 
-    seriesColors: ["#A60400", "#9999FF", "#000"],
+    seriesColors: color_arr, 
     title: x.options[x.selectedIndex].text + " vs. " + y.options[y.selectedIndex].text,
     legend: {
       show:label_show,

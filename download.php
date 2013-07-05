@@ -13,15 +13,15 @@ if(isset($_POST["ids"])) {
 
   }
 
-  $query = "SELECT id, file1v2, file2v1, genome_name1, genome_name2 FROM data WHERE ";
+  $query = "SELECT d.id, d.file1v2, d.file2v1, t1.Genome, t2.Genome FROM data d, taxonomy t1, taxonomy t2 WHERE (d.genome_id1=t1.id and d.genome_id2=t2.id) AND (";
 
   $i = 0;
   for($i = 0; $i < count($ids); $i++) {
-    $query .= "id=" . $ids[$i] . " OR ";
+    $query .= "d.id=" . $ids[$i] . " OR ";
   }
 
   $query = substr($query, 0, -3);
-  $query = $query . ";";
+  $query = $query . ");";
 
   if($result = mysqli_query($con, $query)) {
     $data=array();

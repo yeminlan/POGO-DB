@@ -9,11 +9,11 @@
 } 
 
 table.display tr.even.row_ava td {
-  background-color: #B0BED9;
+  background-color: #F99;
 }
 
 table.display tr.odd.row_ava  td {
-  background-color: #9FAFD1;
+  background-color: #FF7373;
 }
 
 table.display tr.even.row_avb td {
@@ -21,13 +21,13 @@ table.display tr.even.row_avb td {
 }
 
 table.display tr.odd.row_avb  td {
-  background-color: #9FAFD1;
+  background-color: #9FA9D1;
 }
 
 table.display tr.even.row_bvb td {
-  background-color: #B0BED9;
+  background-color: #ABABAB;
 }
 
 table.display tr.odd.row_bvb  td {
-  background-color: #9FAFD1;
+  background-color: #8f8f8f;
 }
