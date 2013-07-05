@@ -22,7 +22,7 @@ $('input[type=checkbox]').live('click', function () {
 $(document).ready(function(){
     
 
-    ("#load").hide();
+    $("#load").hide();
     cols = [2, 3];
     for(var i = 5; i < dataColumns.length; i++){
     cols.push(i);
