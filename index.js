@@ -27,7 +27,9 @@ $(document).ready(function(){
 
 
 function error(string, errorBox) {
-  window.alert(string);
+  $(errorBox).html(string);
+  $(errorBox).show();
+  $(errorBox).fadeOut(3000);
 }
 
 function getSelected(table) {

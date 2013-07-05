@@ -137,6 +137,7 @@ Select two sets of genomes to compare:
   href="about.php#averageranking">?</a> </sup>
 </p>
 
+  <div id="SubmitError" class="error" style="display:none"></div>
 <p>
   <button id="clearAll" onClick="clearTable('#BoxA');clearTable('#BoxB')">Reset Comparison</button>
   <button id="submit" onClick="submit()">Submit Query</button>
