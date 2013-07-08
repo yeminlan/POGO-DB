@@ -45,6 +45,8 @@ function add(type, box){
 
   var selected_val = Selected.options[Selected.selectedIndex].value;
   var AddToId= "Box" + box;
+  if(selected_val === "Unidentified")
+    selected_val = null
 
   if(type === 'Genome') {
     if(selected_val === "All") {
@@ -274,14 +276,26 @@ function populate() {
   addValueToSelectBox(Genus, "All");
   addValueToSelectBox(Genomes, "All");
 
-  for(i in species) 
-    addValueToSelectBox(Species, species[i]);
+  for(i in species) {
+    if(species[i] != null)
+      addValueToSelectBox(Species, species[i]);
+    else
+      addValueToSelectBox(Species, "Unidentified");
+  }
 
-  for(i in genus) 
-    addValueToSelectBox(Genus, genus[i]);
+  for(i in genus) {
+    if(genus[i] != null)
+      addValueToSelectBox(Genus, genus[i]);
+    else
+      addValueToSelectBox(Genus, "Unidentified");
+  }
 
-  for(i in genome) 
-    addValueToSelectBox(Genomes, genome[i]);
+  for(i in genome) {
+    if(genome[i] != null)
+      addValueToSelectBox(Genomes, genome[i]);
+    else
+      addValueToSelectBox(Genomes, "Unidentified");
+  }
 
   Genomes.selectedIndex = 0;
   Genus.selectedIndex = 0;
@@ -309,12 +323,14 @@ function selected(type) {
   if(Selected.selectedIndex == -1) 
     return;
 
-  var Genomes=document.getElementById('Genome');
-  var Genus=document.getElementById('Genus');
+  var Genomes = document.getElementById('Genome');
+  var Genus = document.getElementById('Genus');
   var Species = document.getElementById('Species');
 
   if(type === 'Genus') { 
     var selected_val = Selected.options[Selected.selectedIndex].text;
+    if(selected_val === "Unidentified")
+      selected_val = null;
 
     Species.options.length = 0;
 
@@ -338,10 +354,17 @@ function selected(type) {
     type = 'Species';
   }
 
-  if(Species.selectedIndex != -1)
+  if(Species.selectedIndex != -1) {
     species_val = Species.options[Species.selectedIndex].text;
-  if(Genus.selectedIndex != -1)
+    if(species_val === "Unidentified")
+      species_val = null;
+  }
+
+  if(Genus.selectedIndex != -1) {
     genus_val = Genus.options[Genus.selectedIndex].text;
+    if(genus_val === "Unidentified")
+      genus_val = null;
+  }
 
   Genomes.options.length = 0;
   addValueToSelectBox(Genomes, "All");
