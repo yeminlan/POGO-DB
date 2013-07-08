@@ -24,8 +24,8 @@ $(document).ready(function(){
     $("#load").hide();
 
     // create our columns array
-    cols = [2, 3];
-    for(var i = 5; i < dataColumns.length; i++){
+    cols = [];
+    for(var i = 1; i < dataColumns.length; i++){
     cols.push(i);
     }
 
@@ -43,10 +43,12 @@ $(document).ready(function(){
       "aButtons": [
         {
           "sExtends": "copy",
+          "sButtonText": "Copy to Clipboard",
           "mColumns": cols
         },
         {
           "sExtends": "csv",
+          "sButtonText": "Download CSV",
           "mColumns": cols}]
       },
     "aoColumnDefs": [ 
@@ -100,17 +102,13 @@ $(document).ready(function(){
       );
     }
 
-    // Hide our id, and files, add fixed columns
-    dataTable.fnSetColumnVis(3, false);
-    dataTable.fnSetColumnVis(4, false);
-    
     // new FixedColumns( dataTable, {"iLeftColumns": 3, });
     yselect = document.getElementById("y");
     xselect = document.getElementById("x");
     
     // populate our dropdown box
     
-    for(var i = 5; i < dataColumns.length - 1; i++){
+    for(var i = 3; i < dataColumns.length - 1; i++){
         var option = document.createElement("option");
         if(dataColumns[i] === "Average AAI" || 
            dataColumns[i] === "Orthologs (1)" ||

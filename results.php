@@ -181,8 +181,8 @@ if(isset($_POST["avgrank"]) && $_POST["avgrank"] === 'true') {
   for($i = 0; $i < count($data); $i++) {
     $temp = array();
     
-    array_push($temp, $data[$i][6]);
-    for($j = 10; $j < count($data[0]); $j++) {
+    array_push($temp, $data[$i][4]);
+    for($j = 8; $j < count($data[0]); $j++) {
       array_push($temp, $data[$i][$j]);
     }
     array_push($avg_data, $temp);
@@ -190,8 +190,8 @@ if(isset($_POST["avgrank"]) && $_POST["avgrank"] === 'true') {
 
   $marker_cols = array();
 
-  array_push($marker_cols, $data_columns[6]);
-  for($j = 10; $j < count($data_columns) - 1; $j++) {
+  array_push($marker_cols, $data_columns[4]);
+  for($j = 8; $j < count($data_columns) - 1; $j++) {
       array_push($marker_cols, $data_columns[$j]);
     }
     array_push($avg_data, $marker_cols);
