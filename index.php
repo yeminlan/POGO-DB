@@ -121,12 +121,12 @@ Select two sets of genomes to compare:
 
 <h4>A Items</h4>
   <table class="display" id="BoxA"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead><tbody></tbody></table><br>
-    <button id="removeA" onClick="rm('#BoxA')">Remove Selected Item from A</button>
+    <button id="removeA" onClick="removeItemFromDataTable('#BoxA')">Remove Selected Item from A</button>
     <button id="removeAllA" onClick="clearTable('#BoxA')">Remove All from A</button>
 
 <h4>B Items</h4>
   <table class="display" id="BoxB"><thead><tr><th>Genus</th><th>Species</th><th>Genome</th></tr></thead><tbody></tbody></table><br>
-    <button id="removeB" onClick="rm('#BoxB')">Remove Selected Item from B</button>
+    <button id="removeB" onClick="removeItemFromDataTable('#BoxB')">Remove Selected Item from B</button>
     <button id="removeAllB" onClick="clearTable('#BoxB')">Remove All from B</button>
 
 <p>

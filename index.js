@@ -303,7 +303,7 @@ function populate() {
 }
 
 
-function rm(box) {
+function removeItemFromDataTable(box) {
   var i = 0;
 
   table = $(box).dataTable();
