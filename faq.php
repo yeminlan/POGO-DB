@@ -13,8 +13,8 @@
 <ol>
 <li> <a href="#1">Can I add the same genome to both group A and group B? </a> </li>
 <li> <a href="#2"> Why does the result missing some of the genome pairs I queried?  </a></li>
-<li> <a href="#3"> Why does some metrics missing for a few pairs of genomes?  </a></li>
-<li> <a href="#4"> What does the option Average Ranking” do? </a> </li>
+<li> <a href="#3"> Why are some metrics missing for a few pairs of genomes?  </a></li>
+<li> <a href="#4"> What does the option Calculate Average Ranking” do? </a> </li>
 <li> <a href="#5"> Why do you provide two criteria for determining orthologs?</a> </li> 
 <li> <a href="#6"> Why does the database only cover genome pairs whose 16S rRNA identity is above 80%? </a> </li>
 <li> <a href="#7"> Why does the database provide branch selection only up to the genus level?</a> </li>
@@ -56,11 +56,10 @@ default comparison between genomes in group A vs. genomes in group B.
 </p>
 
 <a name="3"></a>
-<h3>Why does some metrics missing for a few pairs of genomes?  </h3>
+<h3>Why are some metrics missing for a few pairs of genomes?  </h3>
 <p>
 The POGO-DB only computes
 the average AAI if two genomes have at least 200 orthologs (as defined by
-
 criterion 1). Similarly, genomic fluidity is only computed for genomes with at
 least 200 orthologs (as defined by criterion2). The limitation prevents us from
 quantifying the overall genomic similarity based on only a few genes.  The
