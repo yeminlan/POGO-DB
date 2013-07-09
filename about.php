@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title> POGO - About..</title>
+  <title>POGO - About..</title>
   <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 

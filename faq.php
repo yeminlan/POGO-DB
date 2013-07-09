@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> POGO F.A.Q.</title>
+  <title>POGO F.A.Q.</title>
   <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 
