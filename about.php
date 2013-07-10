@@ -592,7 +592,7 @@ potentially better marker gene for this species.
 <a name="allvsall"></a>
 <h2>Example: All vs. All</h2>
 <p>
-The search time increases exponentially to the number of genomes queried.
+The search time increases with the number of genomes queried.
 Therefore, should the users be interested in the comparison between most of the
 genomes, we provide the result table ready to download <a
 href="/download/POGODB_all_genome_pairs_identities.csv.bz2">POGODB_all_genome_pairs_identities.csv.bz2</a>,
@@ -602,7 +602,7 @@ genomes, please download <a
 href="/download/POGODB_16S_rRNA_identity.csv.bz2">POGODB_16S_rRNA_identity.csv.bz2</a>.
 The 2-D graphs of several metrics are also pre-draw, which are available below
 and also for <a
-href="/download/POGODB_all_genome_pairs_figures.zip">/download/POGODB_all_genome_pairs_figures.zip</a>.
+href="/download/POGODB_all_genome_pairs_figures.tar">POGODB_all_genome_pairs_figures.tar</a>.
 </p>
 
 <img src="images/example_all_vs_all_1.png"><br>
