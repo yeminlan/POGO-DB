@@ -5,7 +5,7 @@ function query_db($con, $arr1, $arr2, $comp, &$data) {
   $result;
   $select = "d.id as ` `, t1.Genome as `Genome 1`, t2.Genome as `Genome 2`, ";
   $select .= "Average_Amino_Acid_Identity as `Average AAI`, ";
-  $select .= "d.16S_rRNA_gene_identify as `16S rRNA`, ";
+  $select .= "d.16S_rRNA as `16S rRNA`, ";
   $select .= "d.Genomic_Fluidity as `Genomic Fluidity`, ";
   $select .= "d.orthologs_criterion1 as `Orthologs (1)`, ";
   $select .= "d.orthologs_criterion2 as `Orthologs (2)`,";
