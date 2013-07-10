@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>POGO - About..</title>
+  <title>POGO - About.</title>
   <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 
@@ -538,7 +538,7 @@ better groups/separates the two selected groups of genomes.
 
 <img src="images/example_comparison_between_two_species_5.png">
 <br>
-<img src="images/ss5.png">
+<img src="images/example_comparison_between_two_species_3.png">
 
 
 <p>
