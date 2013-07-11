@@ -8,6 +8,9 @@
   <div class="h_link"><a href="faq.php">F.A.Q.</a></div>
   <div class="h_link"><a href="contact.php">Contact</a></div>
   <div class="h_link"><a href="downloads.php">Download</a></div>
+  <div class="h_link"><a href="api_doc.php">API</a></div>
+  <div style="float:right">
   <div class="h_link"><a href="http://hershberg.net.technion.ac.il/">Hershberg Lab</a></div>
   <div class="h_link"><a href="http://www.ece.drexel.edu/gailr/EESI/">EESI Lab</a></div>
+  </div>
 </div>
