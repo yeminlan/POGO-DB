@@ -34,10 +34,10 @@ $(document).ready(function(){
     "sScrollX": "100%",
     "sScrollY": "100%", 
     "bSort": true,
-    "bDeferRender": true,
     "bAutoWidth": false,
     "bScrollCollapse": true,
     "sDom": 'T<"clear">lfrtip',
+    "sPaginationType": "full_numbers",
     "oTableTools": {
       "sSwfPath": "media/swf/copy_cvs_xls.swf",
       "aButtons": [
@@ -169,13 +169,9 @@ function submitIds() {
 }
 
 function selectCB(val) {
-  form = document.getElementById("submitform");
-  for (var i = 0; i < form.elements.length; i++ ) {
-    if (form.elements[i].type == 'checkbox') {
-      form.elements[i].checked == val;
-    }
-  }
+  $('input', dataTable.fnGetNodes()).attr('checked',val);
 }
+
 function calculate_averages() {
   var ranking = [];
   var comparison = [];

@@ -152,9 +152,10 @@ else { ?>
     </script>
   </tr></thead></table>
   <p>
-  <!-- <button type="button" class='buttons' onClick="selectAll">Select all</button> --!>
-  <form id="submitform">
-  <button type="button" class='buttons' onClick="submitIds()">Download Selected</button> 
+  <form id="submitform" style="clear:both">
+  <button type="button" class='buttons' onClick="selectCB(true)">Select all</button> 
+  <button type="button" class='buttons' onClick="selectCB(false)">Unselect all</button> 
+  <button type="button" class='buttons' onClick="submitIds()">Download Selected Blast Files</button> 
   </form>
   </p>
 
