@@ -7,7 +7,7 @@ $(window).resize(function() {
 });
 
 
-$('input[type=checkbox]').live('click', function () {
+$('input[type=checkbox]').live('change', function () {
 
     if($.inArray(this.id, Ids) == -1) {
       Ids.push(this.id); 
@@ -169,6 +169,20 @@ function submitIds() {
 }
 
 function selectCB(val) {
+  checkboxes = $('input', dataTable.fnGetNodes());
+
+  for(var i = 0; i < checkboxes.length; i++) { 
+    if(checkboxes[i].checked != val) {
+      if($.inArray(checkboxes[i].id, Ids) == -1) {
+        Ids.push(checkboxes[i].id); 
+      }
+      else {
+        var idx = Ids.indexOf(checkboxes[i].id);
+        Ids.splice(idx,1);
+      }                           
+    }
+  }
+
   $('input', dataTable.fnGetNodes()).attr('checked',val);
 }
 
