@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>POGO Downloads</title>
+<title>POGO API</title>
 <link rel="stylesheet" type="text/css" href="default.css">
 <link rel="stylesheet" type="text/css" href="doc.css">
 </head>
@@ -23,6 +23,7 @@ be used to query the database directly</p>
       <a href="#type"><li>Type</li>
       <a href="#select"><li>Select</li>
       <a href="#where"><li>Where</li>
+      <a href="#limit"><li>Limit</li>
       <a href="#array"><li>Array</li>
     </ol>
   <a href="#properties"><li>Properties</li></a>
@@ -95,8 +96,8 @@ interested in</p>
 
 <a name="methods"></a>
 <h1>Methods</h1>
-  There are four basic methods that our API accepts. Type, Select, Where and
-  Array.
+  There are five basic methods that our API accepts. Type, Select, Where and
+  Array, and Limit.
   
   <a name="type"></a>
   <h2>Type</h2>
@@ -161,24 +162,25 @@ interested in</p>
   knowledge of logic or programming.
   </p>
 
+  <p> At the bottom of this document are examples for different where statements</h2>
+
   <p>
-  Because operators like the equal sign cannot be used in GET statements, we use 
-  alternative operators which are listed below:
+  The operators we support are listed below
   </p>
   <table class="doc_table" style="display:inline-block">
   <thead>
   <th>Equality Operator</th><th>Explanation</th>
   </thead>
   <tr>
-    <td>eq</td>
+    <td>=</td>
     <td>equal</td>
   </tr>
   <tr> 
-    <td>lt</td>
+    <td>&lt;</td>
     <td>less than</td>
   </tr>
   <tr>
-    <td>gt</td>
+    <td>&gt;</td>
     <td>greater than</td>
   </tr>
   <tr>
@@ -207,7 +209,7 @@ interested in</p>
   <tr>
     <td>like(string)</td>
     <td>wrapper for MySQL LIKE</td>
-    <td>genus eq like('Chlamy')</td>
+    <td>genus like('Chlamy')</td>
   </tr>
   </table>
 
@@ -267,11 +269,28 @@ interested in</p>
   </code>
   </p>
 
+  <a name="limit"></a>
+  <h2>Limit</h2>
+  <p> The Limit argument allows the user to specify how many results you want to return at maximum</p>
 
-  <a name="arrayA"></a>
+  <code>
+    http://pogo.ece.drexel.edu/query.php?type=data&limit=1000
+  </code>
+
+  <a name="output"></a>
+  <h2>Output</h2>
+  <p>The Output argument allows you to specify if you want CSV or JSON output. By default a JSON array will be returned.
+  </p>
+
+  <code>
+    http://pogo.ece.drexel.edu/query.php?type=data&limit=1000
+  </code>
+
+  <a name="array"></a>
   <h2>Array</h2>
   <p>The Array argument allows you to specify if you want either a JSON
-  Associative Array, or a Indexed Array. For more information read this <a
+  Associative Array, or a Indexed Array, if you are using JSON as your output
+  type. For more information read this <a
   href="http://w3schools.com/php/php_arrays.asp">link</a>.</p>
 
   <p>
@@ -297,7 +316,7 @@ interested in</p>
 
    <p>This is an example of returning an associative array in the data table</p>
     <code>
-      http://pogo.ece.drexel.edu/query.php?type=data&array=ASSOC&
+      http://pogo.ece.drexel.edu/query.php?type=data&output=JSON&array=ASSOC&
     </code>
   </p>
 
@@ -427,6 +446,36 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   <td>marker genes</td>
   <td>float</td>
   </tr>
+  <tr>
+  <td>genome1_name, genome2_name</td>
+  <td>the name of the genome.</td>
+  <td>string</td>
+  </tr>
+  <tr>
+  <td>genome1_phylum, genome2_phylum</td>
+  <td>the phylum of the genome.</td>
+  <td>string</td>
+  </tr>
+  <tr>
+  <td>genome1_class, genome2_class</td>
+  <td>the class of the genome.</td>
+  <td>string</td>
+  </tr>
+  <tr>
+  <td>genome1_genus, genome2_genus</td>
+  <td>the genus of the genome.</td>
+  <td>string</td>
+  </tr>
+  <tr>
+  <td>genome1_species, genome2_species</td>
+  <td>the species of the genome.</td>
+  <td>string</td>
+  </tr>
+  <tr>
+  <td>genome1_superkingdom, genome2_superkingdom</td>
+  <td>the superkingdom of the genome.</td>
+  <td>string</td>
+  </tr>
   </tbody>
 </table>
 
@@ -439,6 +488,8 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   </p>
 
   <p>
+  The ids variable corresponds to the "id" column in the comparison table.   <p>
+  </p>
   This example requests a tarball containing blast files from comparisons with
   the id's 2354, 19201, and 623719.
   </p>
@@ -446,7 +497,49 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
     http://pogo.ece.drexel.edu/download.php?ids=2354,19201,623719
   </code>
   
+<a name="examples">
+<h1>Examples</h1>
 
+<h2>Taxonomy Comparisons</h2>
+
+Comparing genus's and other taxonomy is slightly more complicated because there
+are two different genomes in each comparison, but we aren't ever sure if which
+one is categorized as genome1 or genome2. Therefore you need to have slightly
+more complex statements to properly select based upon taxonomy.
+
+here's a pseudo-code where statement on how to correctly ask for all A vs B:
+ <code><pre>
+ if (genome1_genus is A and genome2_genus is B)
+ OR
+ if (genome1_genus is B and genome2_genus is A)
+
+ >>> Then show me the results
+</pre></code>
+
+<h3>One Genus vs Another</h3>
+  <code>
+    http://pogo.ece.drexel.edu/query.php?type=data&where=(genome1_genus eq 'Bacillus' and genome2_genus eq 'Chlamydia') or (genome1_genus eq 'Chlamydia' and genome2_genus eq 'Bacillus')
+  </code>
+
+
+<h3>One Genus vs Itself</h3>
+  <code>
+    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus eq 'Bacillus' and genome2_genus eq 'Bacillus'
+  </code>
+
+<h3>One Species vs All Others</h3>
+  <code>
+    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus eq 'Bacillus halodurans' or genome2_species eq 'Bacillus halodurans'
+  </code>
+<h3>One Species vs Itself</h3>
+  <code>
+    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus eq 'Bacillus halodurans' and genome2_genus eq 'Bacillus halodurans'
+  </code>
+<h3>One Genus vs. Another and ValS > 91%</h2>
+Adding another statment isn't difficult on top of taxonomy.
+  <code>
+    http://pogo.ece.drexel.edu/query.php?type=data&where=ValS gt .90 AND ((genome1_genus eq 'Bacillus' and genome2_genus eq 'Chlamydia') or (genome1_genus eq 'Chlamydia' and genome2_genus eq 'Bacillus'))
+  </code>
 </div>
 <php include 'footer.php'; ?>
 </div>
