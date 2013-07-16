@@ -97,7 +97,9 @@ if(isset($_GET["output"])) {
 }
 
 $query = "SELECT " . $select . " FROM " . $type . " WHERE " . $where . " " . $limit . ";";
-//echo $query . "<br>";
+if($_GET["debug"] === "true") {
+  echo $query . "<br>";
+}
 
 $data = array();
 
@@ -124,6 +126,8 @@ if($result = mysqli_query($con, $query)) {
     echo json_encode($row);
     echo "]";
   }
+} else {
+  err("There was an error in your query");
 }
 
 ?>
