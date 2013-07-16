@@ -4,18 +4,15 @@ include 'login.php';
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-$data_columns = array( "id","genome_id1","genome_id2","number_of_genes1","number_of_genes2","file1v2","file2v1orthologs_criterion1","orthologs_criterion2","Average_Amino_Acid_Identity","Genomic_Fluidity","16S_rRNA","ArgS","CdsA","CoaE","CpsG","DnaN","Efp","Exo","Ffh","FtsY","FusA","GlnS","GlyA","GroL","HisS","IleS","InfA","InfB","KsgA","LeuS","Map","MetG","NrdA","NusG","PepP","PheS","PheT","ProS","PyrG","RecA","RplA","RplB","RplC","RplD","RplE","RplF","RplJ","RplK","RplM","RplN","RplP","RplR","RplV","RplX","RpoA","RpoB","RpoC","RpsB","RpsC","RpsD","RpsE","RpsG","RpsH","RpsI","RpsJ","RpsK","RpsL","RpsM","RpsN","RpsO","RpsQ","RpsS","SecY","Sers","ThrS","Tmk","TopA","TrpS","TruB","TrxA","TrxB","TufB","TyrS","ValS","genome1_name","genome1_Phylum","genome1_class","genome1_order","genome1_family","genome1_genus","genome1_species","genome1_superkingdom","genome2_name","genome2_phylum","genome2_class","genome2_order","genome2_family","genome2_genus","genome2_species","genome2_superkingdom");
-//$taxonomy_columns = array( "id","Genome","Phylum","Class","Order","Family","Genus","Species","Superkingdom" );
+$data_columns = array( "ID","GENOME_ID1","GENOME_ID2","NUMBER_OF_GENES1","NUMBER_OF_GENES2","FILE1V2","FILE2V1ORTHOLOGS_CRITERION1","ORTHOLOGS_CRITERION2","AVERAGE_AMINO_ACID_IDENTITY","GENOMIC_FLUIDITY","16S_RRNA","ARGS","CDSA","COAE","CPSG","DNAN","EFP","EXO","FFH","FTSY","FUSA","GLNS","GLYA","GROL","HISS","ILES","INFA","INFB","KSGA","LEUS","MAP","METG","NRDA","NUSG","PEPP","PHES","PHET","PROS","PYRG","RECA","RPLA","RPLB","RPLC","RPLD","RPLE","RPLF","RPLJ","RPLK","RPLM","RPLN","RPLP","RPLR","RPLV","RPLX","RPOA","RPOB","RPOC","RPSB","RPSC","RPSD","RPSE","RPSG","RPSH","RPSI","RPSJ","RPSK","RPSL","RPSM","RPSN","RPSO","RPSQ","RPSS","SECY","SERS","THRS","TMK","TOPA","TRPS","TRUB","TRXA","TRXB","TUFB","TYRS","VALS","GENOME1_NAME","GENOME1_PHYLUM","GENOME1_CLASS","GENOME1_ORDER","GENOME1_FAMILY","GENOME1_GENUS","GENOME1_SPECIES","GENOME1_SUPERKINGDOM","GENOME2_NAME","GENOME2_PHYLUM","GENOME2_CLASS","GENOME2_ORDER","GENOME2_FAMILY","GENOME2_GENUS","GENOME2_SPECIES","GENOME2_SUPERKINGDOM");
+$taxonomy_columns = array( "ID","GENOME","PHYLUM","CLASS","ORDER","FAMILY","GENUS","SPECIES","SUPERKINGDOM" );
 function err($error_string) {
   echo $error_string;
   exit;
 }
 
 // do some basic checks.
-if(!isset($_GET["type"])) {
-  err("missing type");
-}
-else {
+if(isset($_GET["type"])) {
   if($_GET["type"] === "taxonomy") {
     $type = $_GET["type"];
     $columns = $taxonomy_columns;
@@ -27,6 +24,9 @@ else {
   else {
     err("unknown type");
   }
+}
+else {
+  err("missing type");
 }
 
 if(isset($_GET["where"])) {
@@ -45,31 +45,31 @@ if(isset($_GET["limit"])) {
 }
 
 // parse selection and error check
-if(!isset($_GET["select"])) {
+if(isset($_GET["select"])) {
+  // if empty error out
+  if($_GET["select"] === "") {
+    $select = "*";
+  } else {
+    // create an array
+    $select_array = explode(",", $_GET["select"]);
+
+    // iterate through our array to ensure these columns actually exist.
+    foreach($select_array as $val) {
+      if(!in_array(strtoupper($val), $columns)) {
+        err("No column named: " . $val);
+      }
+    }
+    
+    // if all columns are valid, then set our select to equal $_GET["select"] 
+    $select = $_GET["select"];
+  }
+}
+else {
   $select = "*";
 } 
-else {
-  // create an array
-  $select_array = explode(",", $_GET["select"]);
-
-  // if empty error out
-  if(count($select_array) == 0) {
-    err("No columns specified");
-  }
-
-  // ok iterate through our array to ensure these columns actually exist.
-  foreach($select_array as $val) {
-    if(!in_array($val, $columns)) {
-      err("No column named: " . $val);
-    }
-  }
-  $select = $_GET["select"];
-}
 
 // parse array type and error check
-if(!isset($_GET["array"])) {
-  $array_type = MYSQL_NUM;
-} else { 
+if(isset($_GET["array"])) {
   if(strtoupper($_GET["array"]) === "ASSOC") {
     $array_type  = MYSQL_ASSOC;
   }
@@ -80,7 +80,9 @@ if(!isset($_GET["array"])) {
     err("unknown array type: " . $_GET["array"]);
   }
 }
-
+else { 
+  $array_type = MYSQL_NUM;
+} 
 
 if(isset($_GET["output"])) {
   if(strtoupper($_GET["output"]) === "CSV") {
@@ -96,8 +98,11 @@ if(isset($_GET["output"])) {
   $output = "JSON";
 }
 
+
+// Construct our query
 $query = "SELECT " . $select . " FROM " . $type . " WHERE " . $where . " " . $limit . ";";
-if($_GET["debug"] === "true") {
+
+if(isset($_GET["debug"]) && $_GET["debug"]=== "true") {
   echo $query . "<br>";
 }
 
