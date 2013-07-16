@@ -54,7 +54,7 @@ else {
 
   // if empty error out
   if(count($select_array) == 0) {
-    err("No columnss specified");
+    err("No columns specified");
   }
 
   // ok iterate through our array to ensure these columns actually exist.
@@ -90,7 +90,7 @@ if(isset($_GET["output"])) {
     $output = "JSON";
   }
   else {
-    err("unknown output type: " . $_GET["output"]);
+    err("Unknown output type: " . $_GET["output"]);
   }
 } else {
   $output = "JSON";
@@ -104,7 +104,17 @@ if($_GET["debug"] === "true") {
 $data = array();
 
 if($result = mysqli_query($con, $query)) {
+  if(mysqli_num_rows($result) == 0) {
+    err("No Results");
+  }
+
   if($output === 'CSV') {
+    // output header
+    for($i = 0; $i < mysqli_num_fields($result) - 1; $i++) {
+    echo mysqli_fetch_field($result)->name . ",";
+    }
+    echo mysqli_fetch_field($result)->name . "\n";
+
     while($row = mysqli_fetch_array($result, $array_type)) {
       for($j = 0; $j < count($row) - 1; $j++) {
         echo $row[$j];
@@ -127,7 +137,7 @@ if($result = mysqli_query($con, $query)) {
     echo "]";
   }
 } else {
-  err("There was an error in your query");
+  err("There was an error in your query: " . mysqli_error($con));
 }
 
 ?>
