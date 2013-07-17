@@ -114,7 +114,7 @@ interested in</p>
 
   <p>Taxonomy Example:
     <code>
-      http://pogo.ece.drexel.edu/query?type=taxonomy
+      http://pogo.ece.drexel.edu/query.php?type=taxonomy
     </code>
   </p>
 
@@ -140,10 +140,10 @@ interested in</p>
   </p>
 
   <p>
-  This example returns the columns genus, species, order, and superkingdom
+  This example returns the columns genus, species, ord, and superkingdom
   from the taxonomy table:
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=taxonomy&select=genus,species,order,superkingdom
+    http://pogo.ece.drexel.edu/query.php?type=taxonomy&select=genus,species,ord,superkingdom
   </code>
   </p>
 
@@ -284,7 +284,7 @@ interested in</p>
   </p>
 
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&limit=1000
+    http://pogo.ece.drexel.edu/query.php?type=data&limit=1000&output=csv
   </code>
 
   <a name="array"></a>
@@ -365,7 +365,7 @@ Our taxonomy table is collected from NCBI with some small changes.
   <td>string</td>
   </tr>
   <tr>
-  <td>order</td>
+  <td>ord</td>
   <td>Order of genome.</td>
   <td>string</td>
   </tr>
