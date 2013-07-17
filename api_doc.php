@@ -25,6 +25,7 @@ be used to query the Pogo database directly.
       <a href="#select"><li>Select</li>
       <a href="#where"><li>Where</li>
       <a href="#limit"><li>Limit</li>
+      <a href="#output"><li>Output</li>
       <a href="#array"><li>Array</li>
     </ol>
   <a href="#properties"><li>Properties</li></a>
@@ -33,7 +34,7 @@ be used to query the Pogo database directly.
       <a href="#data"><li>Comparison Data</li></a>
       <a href="#download"><li>Blast Files</li></a>
     </ol>
-
+  <a href="#examples"><li>Examples</li></a>
 </ol>
 </div>
 
