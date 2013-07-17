@@ -11,7 +11,8 @@
 <h1>API Documentation</h1>
 <p>
 This page contains documentation and examples for our API. This API can
-be used to query the database directly</p>
+be used to query the Pogo database directly.
+</p>
 
 <div class=toc>
 <ol>
@@ -61,8 +62,8 @@ containing taxonomic information about the genomes.
 </p>
 
 <p>
-Our database's API returns JSON formatted arrays, and uses REST's "GET"
-mechanism to work. POGO's database API is loosely based around SQL select
+Our database's API returns JSON formatted arrays or CSV files, and uses REST's
+"GET" mechanism to work. POGO's database API is loosely based around SQL select
 statements, since we use MySQL as our database backend.
 </p>
 
@@ -96,8 +97,8 @@ interested in</p>
 
 <a name="methods"></a>
 <h1>Methods</h1>
-  There are five basic methods that our API accepts. Type, Select, Where and
-  Array, and Limit.
+  There are three main methods that our API accepts. Type, Select, and Where.
+  There are also other arguments including and Array, and Limit and Output.
   
   <a name="type"></a>
   <h2>Type</h2>
