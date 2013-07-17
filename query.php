@@ -32,6 +32,7 @@ else {
 if(isset($_GET["where"])) {
   $where = $_GET["where"];
   $where = preg_replace(",like\\('(.*)'\\),", "LIKE('%$1%')", $where);
+  $where = " WHERE " . $where;
 }
 else {
   $where = "";
@@ -100,7 +101,7 @@ if(isset($_GET["output"])) {
 
 
 // Construct our query
-$query = "SELECT " . $select . " FROM " . $type . " WHERE " . $where . " " . $limit . ";";
+$query = "SELECT " . $select . " FROM " . $type . $where . " " . $limit . ";";
 
 if(isset($_GET["debug"]) && $_GET["debug"]=== "true") {
   echo $query . "<br>";
