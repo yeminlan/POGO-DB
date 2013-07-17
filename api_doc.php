@@ -83,7 +83,7 @@ columns species, genome, and family.
 </p>
 
 <code>
-http://pogo.ece.drexel.edu/query.php?type=taxonomy&select=species,genome,family
+http://pogo.ece.drexel.edu/query.php?type=taxonomy&select=species,genome,family&limit=10
 </code>
 
 <p>To get more specific results we need to tell the database to return only rows
@@ -114,7 +114,7 @@ interested in</p>
 
   <p>Taxonomy Example:
     <code>
-      http://pogo.ece.drexel.edu/query.php?type=taxonomy
+      http://pogo.ece.drexel.edu/query.php?type=taxonomy&limit=10
     </code>
   </p>
 
@@ -123,7 +123,7 @@ interested in</p>
 
   <p>Data Example:
     <code>
-      http://pogo.ece.drexel.edu/query.php?type=data
+      http://pogo.ece.drexel.edu/query.php?type=data&limit=10
     </code>
   <p>
 
@@ -143,7 +143,7 @@ interested in</p>
   This example returns the columns genus, species, ord, and superkingdom
   from the taxonomy table:
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=taxonomy&select=genus,species,ord,superkingdom
+    http://pogo.ece.drexel.edu/query.php?type=taxonomy&select=genus,species,ord,superkingdom&limit=10
   </code>
   </p>
 
@@ -151,7 +151,7 @@ interested in</p>
   This example returns the columns id from data
   from the data table:
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&select=id
+    http://pogo.ece.drexel.edu/query.php?type=data&select=id&limit=10
   </code>
   </p>
 
@@ -186,7 +186,7 @@ interested in</p>
   </tr>
   <tr>
     <td>!</td>
-    <td>not. this operator proceeds others, like !eq</td>
+    <td>not. this operator proceeds others, like !=</td>
   </tr>
   <tr>
     <td>and</td>
@@ -219,35 +219,28 @@ interested in</p>
   <p>
   Select all columns from rows where the genus is Bacillus
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=taxonomy&where=genus eq 'Bacillus'
-  </code>
-  </p>
-
-  <p>
-  Select all columns from rows where the genus contains 'Actino'
-  <code>
-    http://pogo.ece.drexel.edu/query.php?type=taxonomy&where=genus eq like('Actino')
+    http://pogo.ece.drexel.edu/query.php?type=taxonomy&where=genus='Bacillus'
   </code>
   </p>
 
   <p>
   Select all taxonomy where the genus contains 'Actino'
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=taxonomy&where=genus eq like('Actino')
+    http://pogo.ece.drexel.edu/query.php?type=taxonomy&where=genus like('Actino')
   </code>
   </p>
 
   <p>
   Select all taxonomy where the Genomic_Fluidity is over 90%
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=Genomic_Fluidity gt .90)
+    http://pogo.ece.drexel.edu/query.php?type=data&where=Genomic_Fluidity&gt;.90
   </code>
   </p>
 
   <p>
   Select all taxonomy where the Genomic_Fluidity is over 90% or less than 20%
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=Genomic_Fluidity gt .90 OR Genomic_Fluidity lt .20)
+    http://pogo.ece.drexel.edu/query.php?type=data&where=Genomic_Fluidity &gt; .90 OR Genomic_Fluidity &lt; .20)
   </code>
   </p>
   
@@ -266,7 +259,7 @@ interested in</p>
   <p>
   Here we have a statement where we select where Genomic_Fluidity is either over 90%, or is less than 20% and has an AAAI over 90%.
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=(Genomic_Fluidity gt .90) or (Genomic_Fluidity lt .20 AND and Average_Amino_Acid_Identity gt .90 )
+    http://pogo.ece.drexel.edu/query.php?type=data&where=(Genomic_Fluidity &gt; .90) or (Genomic_Fluidity &lt; .20 AND Average_Amino_Acid_Identity &gt; .90 )
   </code>
   </p>
 
@@ -317,7 +310,7 @@ interested in</p>
 
    <p>This is an example of returning an associative array in the data table</p>
     <code>
-      http://pogo.ece.drexel.edu/query.php?type=data&output=JSON&array=ASSOC&
+      http://pogo.ece.drexel.edu/query.php?type=data&output=JSON&array=ASSOC&limit=10
     </code>
   </p>
 
@@ -434,7 +427,7 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   </tr>
   <tr>
   <td>Genomic_Fluidity</td>
-  <td>See abougt page for more about Genomic Fluidity</td>
+  <td>See about page for more about Genomic Fluidity</td>
   <td>float</td>
   </tr>
   <tr>
@@ -519,27 +512,27 @@ here's a pseudo-code where statement on how to correctly ask for all A vs B:
 
 <h3>One Genus vs Another</h3>
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=(genome1_genus eq 'Bacillus' and genome2_genus eq 'Chlamydia') or (genome1_genus eq 'Chlamydia' and genome2_genus eq 'Bacillus')
+    http://pogo.ece.drexel.edu/query.php?type=data&where=(genome1_genus='Bacillus' and genome2_genus='Chlamydia') or (genome1_genus='Chlamydia' and genome2_genus='Bacillus')
   </code>
 
 
 <h3>One Genus vs Itself</h3>
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus eq 'Bacillus' and genome2_genus eq 'Bacillus'
+    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus='Bacillus' and genome2_genus='Bacillus'
   </code>
 
 <h3>One Species vs All Others</h3>
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus eq 'Bacillus halodurans' or genome2_species eq 'Bacillus halodurans'
+    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus='Bacillus halodurans' or genome2_species='Bacillus halodurans'
   </code>
 <h3>One Species vs Itself</h3>
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus eq 'Bacillus halodurans' and genome2_genus eq 'Bacillus halodurans'
+    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus='Bacillus halodurans' and genome2_genus='Bacillus halodurans'
   </code>
 <h3>One Genus vs. Another and ValS > 91%</h2>
 Adding another statment isn't difficult on top of taxonomy.
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=ValS gt .90 AND ((genome1_genus eq 'Bacillus' and genome2_genus eq 'Chlamydia') or (genome1_genus eq 'Chlamydia' and genome2_genus eq 'Bacillus'))
+    http://pogo.ece.drexel.edu/query.php?type=data&where=ValS &gt; .90 AND ((genome1_genus='Bacillus' and genome2_genus='Chlamydia') or (genome1_genus='Chlamydia' and genome2_genus='Bacillus'))
   </code>
 </div>
 <php include 'footer.php'; ?>
