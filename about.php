@@ -600,9 +600,8 @@ which contains the results for all pairs of genomes whose 16S rRNA gene identity
 are above 80%. To view the maximum 16S rRNA identity between all pairs of
 genomes, please download <a
 href="/download/POGODB_16S_rRNA_identity.csv.bz2">POGODB_16S_rRNA_identity.csv.bz2</a>.
-The 2-D graphs of several metrics are also pre-draw, which are available below
+The 2-D graphs of several metrics are also pre-drawn, which are available below
 and also for <a
-href="/download/POGODB_all_genome_pairs_figures.tar">POGODB_all_genome_pairs_figures.tar</a>.
 </p>
 
 <img src="images/example_all_vs_all_1.png"><br>
