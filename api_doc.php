@@ -232,16 +232,16 @@ interested in</p>
   </p>
 
   <p>
-  Select all taxonomy where the Genomic_Fluidity is over 90%
+  Select all data where the Genomic_Fluidity is over 90%
   <code>
     http://pogo.ece.drexel.edu/query.php?type=data&where=Genomic_Fluidity&gt;.90
   </code>
   </p>
 
   <p>
-  Select all taxonomy where the Genomic_Fluidity is over 90% or less than 20%
+  Select all data where the Genomic_Fluidity is over 90% or less than 20%
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=Genomic_Fluidity &gt; .90 OR Genomic_Fluidity &lt; .20)
+    http://pogo.ece.drexel.edu/query.php?type=data&where=Genomic_Fluidity&gt;.90 OR Genomic_Fluidity&lt;.20
   </code>
   </p>
   
@@ -491,7 +491,7 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   <code>
     http://pogo.ece.drexel.edu/download.php?ids=2354,19201,623719
   </code>
-  
+
 <a name="examples">
 <h1>Examples</h1>
 
@@ -528,12 +528,7 @@ here's a pseudo-code where statement on how to correctly ask for all A vs B:
   </code>
 <h3>One Species vs Itself</h3>
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus='Bacillus halodurans' and genome2_genus='Bacillus halodurans'
-  </code>
-<h3>One Genus vs. Another and ValS > 91%</h2>
-Adding another statment isn't difficult on top of taxonomy.
-  <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=ValS &gt; .90 AND ((genome1_genus='Bacillus' and genome2_genus='Chlamydia') or (genome1_genus='Chlamydia' and genome2_genus='Bacillus'))
+    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_species='Haemophilus influenzae' and genome2_species='Haemophilus influenzae'
   </code>
 </div>
 <php include 'footer.php'; ?>
