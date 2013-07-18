@@ -88,7 +88,7 @@ http://pogo.ece.drexel.edu/query.php?type=taxonomy&select=species,genome,family&
 </code>
 
 <p>To get more specific results we need to tell the database to return only rows
-that fit what we are interested. As you saw above, we can tell the database what
+that fit what we are interested in. As you saw above, we can tell the database what
 columns we are interested in, but we now need to tell it what columns we are
 interested in</p>
 
@@ -524,7 +524,7 @@ here's a pseudo-code where statement on how to correctly ask for all A vs B:
 
 <h3>One Species vs All Others</h3>
   <code>
-    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_genus='Bacillus halodurans' or genome2_species='Bacillus halodurans'
+    http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_species='Haemophilus influenzae' or genome2_species='Haemophilus influenzae'
   </code>
 <h3>One Species vs Itself</h3>
   <code>
