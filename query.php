@@ -89,6 +89,7 @@ else {
 if(isset($_GET["output"])) {
   if(strtoupper($_GET["output"]) === "CSV") {
     $output = "CSV";
+    $array_type = MYSQL_NUM;
   }
   else if(strtoupper($_GET["output"]) === "JSON") {
     $output = "JSON";
