@@ -1,0 +1,29 @@
+.toc { 
+  margin:1em;
+  display: inline-block;
+  padding-right:1em;
+  border: 1px solid #08c;
+  background-color: #f9f9f9;
+}
+
+.main h2 {
+  border-bottom: 1px solid grey;
+  }
+
+.main h2 {
+  margin-bottom: .2em;
+  }
+.indent {
+  margin-left: 1em;
+}
+
+.main code, .main pre code, .main pre samp {
+  display: block;
+  margin: 1em;
+  padding: 8px 10px;
+  color: #000;
+  line-height: 1.25;
+  background: transparent;
+  border: 1px solid #bebab0;
+}
+
