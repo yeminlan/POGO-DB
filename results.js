@@ -186,11 +186,23 @@ function selectCB(val) {
   $('input', dataTable.fnGetNodes()).attr('checked',val);
 }
 
+
+avg_data = [];
 function calculate_averages() {
   var ranking = [];
   var comparison = [];
   var i = 0;
   var j = 0;
+
+
+  // create our average data array
+  for(i = 0; i < data.length; i++) {
+    avg_data[i] = [];
+    avg_data[i].push(data[i][4]);
+    for(j = 8; j < data[0].length; j++) {
+      avg_data[i].push(data[i][j]);
+    }
+  }
 
   no_comparisons = avg_data[0].length;
 
@@ -206,7 +218,7 @@ function calculate_averages() {
     }
   }
 
-  for(i = (null_arr.length - 1) ; i > -1; i--) {
+  for(i = (null_arr.length - 1); i > -1; i--) {
     avg_data.splice(null_arr[i], 1);
   }
 
@@ -216,7 +228,7 @@ function calculate_averages() {
   }
 
   //for each array turn it into a ranking
-  for(j = 0; j < avg_data.length - 1; j++) {
+  for(j = 0; j < avg_data.length; j++) {
       comparison.push(avg_data[j].slice(-1)[0]);
       var sorted = avg_data[j].slice(0, avg_data[j].length - 1).sort(function(a,b){return b-a})
       var ranks = avg_data[j].slice(0, avg_data[j].length - 1).map(function(v){ return sorted.indexOf(v)+1 });
@@ -262,7 +274,6 @@ function calculate_averages() {
   }
 
   if(bvb_arr.length > 0) {
-   
     avgs_arr.push(averageRankings(bvb_arr));
     columns_arr.push("B vs. B (" + bvb_arr.length + " Genome Pairs)");
   }
@@ -284,8 +295,9 @@ function calculate_averages() {
     ret.push(temp);
   }
 
-  return [ret, columns_arr, 0];
+  return [ret, columns_arr, 0, ava_arr, avb_arr, bvb_arr, avg_data, ranking, comparison];
 }
+
 
 function averageRankings(array) {
   var i = 0;

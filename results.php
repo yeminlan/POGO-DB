@@ -201,7 +201,6 @@ if(isset($_POST["avgrank"]) && $_POST["avgrank"] === 'true') {
   <script>
     var headers = <?php echo json_encode($headers); ?>;
     var marker_cols = <?php echo json_encode($marker_cols); ?>;
-    var avg_data = <?php echo json_encode($avg_data); ?>;
     var marker_gene = true;
   </script>
 
