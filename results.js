@@ -295,7 +295,7 @@ function calculate_averages() {
     ret.push(temp);
   }
 
-  return [ret, columns_arr, 0, ava_arr, avb_arr, bvb_arr, avg_data, ranking, comparison];
+  return [ret, columns_arr, 0]
 }
 
 
