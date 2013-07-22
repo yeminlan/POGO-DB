@@ -90,11 +90,6 @@ float:right;
 padding:.2em;
 }
 
-body{
-    font-family:Arial, Helvetica, sans-serif; 
-        font-size:13px;
-        }
-
 .error {
 color: #D8000C;
 border: 1px solid;
@@ -105,4 +100,47 @@ background-repeat: no-repeat;
 background-position: 5px center;
 background-color: #FFBABA;
 background-image: url('images/error.png');
+}
+
+.download {
+  white-space: nowrap;
+  }
+.download img {
+  width: auto;
+}
+
+.doc_table {
+width:100%;
+border-collapse:collapse;
+}
+
+.doc_table a{
+  color:#01c;
+  text-decoration:none;
+}
+
+.doc_table a:visited{
+  color:#08c;
+}
+.doc_table td, .doc_table th 
+{
+font-size:1.1em;
+border:1px solid #08c;
+padding:3px 7px 2px 7px;
+}
+
+.doc_table th 
+{
+font-size:1.1em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#99CCFF;
+color:#08f;
+}
+
+.doc_table tr.alt td 
+{
+color:#000;
+background-color:#C2E0FF;
 }
