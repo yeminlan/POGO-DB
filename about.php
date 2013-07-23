@@ -592,17 +592,15 @@ potentially better marker gene for this species.
 <a name="allvsall"></a>
 <h2>Example: All vs. All</h2>
 <p>
-The search time increases with the number of genomes queried.
-Therefore, should the users be interested in the comparison between most of the
-genomes, we provide the result table ready to download <a
-href="/download/POGODB_all_genome_pairs_identities.csv.bz2">POGODB_all_genome_pairs_identities.csv.bz2</a>,
-which contains the results for all pairs of genomes whose 16S rRNA gene identity
-are above 80%. To view the maximum 16S rRNA identity between all pairs of
-genomes, please download <a
-href="/download/POGODB_16S_rRNA_identity.csv.bz2">POGODB_16S_rRNA_identity.csv.bz2</a>.
-The 2-D graphs of several metrics are also pre-drawn, which are available below
-and also for <a
-</p>
+The time it takes to query the database increases with the number of genome
+comparisons requested, so if you are interested in comparing a large number of
+genomes, we provide some precomputed results. On our <a
+href="download.php">Download</a> page we have results of all marker genes, and
+all genome pairs where 16S rRNA gene identity is above 80%, and also all 16S
+rRNA gene identity for all comparisons even when they are below 80. Below we
+also provide several graphs of All vs. All, which are also available on the
+download page
+
 
 <img src="images/example_all_vs_all_1.png"><br>
 <img src="images/example_all_vs_all_2.png"><br>
