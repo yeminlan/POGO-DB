@@ -412,7 +412,7 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   <td>string</td>
   </tr>
   <tr>
-  <td>numuber_of_genes1, number_of_genes2</td>
+  <td>number_of_genes1, number_of_genes2</td>
   <td>Number of genes from respective genome in comparison.</td>
   <td>integer</td>
   </tr>
@@ -438,7 +438,7 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   </tr>
   <tr>
   <td>ArgS, CdsA, CoaE, etc.</td>
-  <td>marker genes</td>
+  <td>other (besides 16S rRNA) marker gene identities<td>
   <td>float</td>
   </tr>
   <tr>
