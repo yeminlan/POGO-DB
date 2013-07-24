@@ -3,6 +3,7 @@ $(document).ready(function(){
     settings = { "bPaginate":true,
                  "bSaveState":true,
                  "bScrollCollapse": true,
+                 "sDom": 'frtip',
                  "bFilter":false,
                  "oLanguage": {
                    "sEmptyTable": "No Genomes Selected"
