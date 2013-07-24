@@ -201,6 +201,13 @@ function submit() {
   }
 
 
+  if(document.getElementById('AvB').checked != true && 
+     document.getElementById('BvB').checked != true && 
+     document.getElementById('AvA').checked != true ) {
+    error("You need to select at least one comparison", "#SubmitError");
+    return;
+  }
+
   for(i = 0; i < a_num_rows; i++) {
     a_ids = atable.fnGetData(i)[3] + "," + a_ids; 
   }
