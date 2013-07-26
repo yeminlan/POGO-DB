@@ -6,18 +6,12 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
 if(isset($_POST["ids"])) {
-
   $ids = explode(",", $_POST["ids"]);
-  if($ids[0] === "all") {
-    header("Location: downloads/all.tar.bz2");
-  }
-} else if(isset($_GET["ids"])) {
-
+} 
+else if(isset($_GET["ids"])) {
   $ids = explode(",", $_GET["ids"]);
-  if($ids[0] === "all") {
-    header("Location: downloads/all.tar.bz2");
-  }
-} else {
+} 
+else {
   echo "No ID's  requested";
   exit();
 }
