@@ -19,6 +19,7 @@ if(isset($_POST["ids"])) {
   }
 } else {
   echo "No ID's  requested";
+  exit();
 }
 
 $query = "SELECT d.id, d.file1v2, d.file2v1, t1.Genome, t2.Genome FROM data d, taxonomy t1, taxonomy t2 WHERE (d.genome_id1=t1.id and d.genome_id2=t2.id) AND (";
@@ -65,12 +66,12 @@ if($result = mysqli_query($con, $query)) {
     }
 
     pclose($tar_handle);
-    unlink($csv_file);
   }
   else {
     echo $command . "<br>";
     echo "something went wrong";
   }
+  unlink($csv_file);
 } 
 else {
   echo $query . "<br>";
