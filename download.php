@@ -45,7 +45,7 @@ if($result = mysqli_query($con, $query)) {
   $gene_ids_handle = fopen($gene_ids_file, 'w');
 
   fwrite($blast_files_handle, "Genome 1, Genome 2, Download Id, filename1v2, filename2v1\n");
-  fwrite($gene_ids_handlee, shell_exec("sed -n 1p " . $ids_file));
+  fwrite($gene_ids_handle, shell_exec("sed -n 1p " . $ids_file));
   $genome_list = array();
   
 
@@ -64,11 +64,11 @@ if($result = mysqli_query($con, $query)) {
   }
   $grep_command = $grep_command . $genome_list[count($genome_list) -1] . "' ";
 
-  fwrite($gene_ids_handlee, shell_exec($grep_command . $ids_file));
+  fwrite($gene_ids_handle, shell_exec($grep_command . $ids_file));
 
 
   fclose($blast_files_handle);
-  fclose($gene_ids_handlee);
+  fclose($gene_ids_handle);
   
   $tar_command .= " " . $blast_files_file . " " . $gene_ids_file;
 
