@@ -595,7 +595,7 @@ potentially better marker gene for this species.
 The time it takes to query the database increases with the number of genome
 comparisons requested, so if you are interested in comparing a large number of
 genomes, we provide some precomputed results. On our <a
-href="download.php">Download</a> page we have results of all marker genes, and
+href="downloads.php">Download</a> page we have results of all marker genes, and
 all genome pairs where 16S rRNA gene identity is above 80%, and also all 16S
 rRNA gene identity for all comparisons even when they are below 80. Below we
 also provide several graphs of All vs. All, which are also available on the
