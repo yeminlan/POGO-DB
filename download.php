@@ -70,7 +70,7 @@ if($result = mysqli_query($con, $query)) {
   fclose($blast_files_handle);
   fclose($gene_ids_handlee);
   
-  tar_command .= " " . $blast_files_file . " " . $gene_ids_file;
+  $tar_command .= " " . $blast_files_file . " " . $gene_ids_file;
 
   if($tar_handle = popen($tar_command, 'r')) {
     header("Content-Type: application/x-tar");
