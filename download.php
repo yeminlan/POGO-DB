@@ -51,8 +51,7 @@ if($result = mysqli_query($con, $query)) {
 
   while($row = mysqli_fetch_array($result, MYSQL_NUM)) {
     $tar_command .= $prefix . $row[1] . " " . $prefix . $row[2] . " "; 
-    fwrite($blast_files_handle
-  , $row[3] . ", " . $row[4] . ", " . $row[0] . ", " . preg_replace(",.*/,", "",  $row[1]) . ", " . preg_replace(",.*/,", "", $row[2]) . "\n");
+    fwrite($blast_files_handle, $row[3] . ", " . $row[4] . ", " . $row[0] . ", " . preg_replace(",.*/,", "",  $row[1]) . ", " . preg_replace(",.*/,", "", $row[2]) . "\n");
     $data[] = $row;
       if(!in_array($row[3], $genome_list))
         array_push($genome_list, $row[3]);
