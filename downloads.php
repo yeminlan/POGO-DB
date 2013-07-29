@@ -35,22 +35,6 @@ We provide users with all of our data, so that they can do their own experiement
 </tr>
 <tr class="alt">
   <td>
-    5.4Mb
-  </td>
-  <td>
-    <div class="download">
-      <a href="http://pogo.ece.drexel.edu/download/POGODB_16S_rRNA_identity.csv.bz2">
-        <img src="images/icons/text.png">
-        16S_rRNA_identity.csv.bz2
-      </a>
-    </div>
-  </td>
-  <td>
-   The maximum 16S rRNA identity between all pairs, even those below 80%.
-  </td>
-</tr>
-<tr>
-  <td>
     256Kb
   </td>
   <td>
@@ -65,9 +49,25 @@ We provide users with all of our data, so that they can do their own experiement
     A tarball of the All vs. All graphs available on the about page.
   </td>
 </tr>
+<tr>
+  <td>
+    5.4Mb
+  </td>
+  <td>
+    <div class="download">
+      <a href="http://pogo.ece.drexel.edu/download/POGODB_16S_rRNA_identity.csv.bz2">
+        <img src="images/icons/text.png">
+        16S_rRNA_identity.csv.bz2
+      </a>
+    </div>
+  </td>
+  <td>
+   The maximum 16S rRNA identity between all pairs, even those below 80%.
+  </td>
+</tr>
 <tr class="alt">
   <td>
-    680Gb
+    688Gb
   </td>
   <td>
     <div class="download">
@@ -87,7 +87,7 @@ We provide users with all of our data, so that they can do their own experiement
   </td>
   <td>
     <div class="download">
-      <a href="http://pogo.ece.drexel.edu/download/taxonomy.csv.bz2">
+      <a href="http://pogo.ece.drexel.edu/download/POGODB_taxonomy.csv.bz2">
         <img src="images/icons/text.png">
         taxonomy.csv.bz2
       </a>
@@ -95,6 +95,21 @@ We provide users with all of our data, so that they can do their own experiement
   </td>
   <td>
     This file contains all of the taxonomic data we have, which was originally collected from NCBI with some corrections.
+  </td>
+</tr>
+<tr> 
+  <td>
+    44Mb 
+  </td>
+  <td>
+    <div class="download"
+      <a href="http://pogo.ece.drexel.edu/download/POGODB_all_geneIDs.csv.bz2">
+        <img src="images/icons/text.png">
+        all_geneIDs.csv.bz2
+      </a>
+    </div>
+  </td>
+  <td>
   </td>
 </tr>
 </table>
