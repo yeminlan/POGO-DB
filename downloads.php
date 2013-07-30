@@ -102,7 +102,7 @@ We provide users with all of our data, so that they can do their own experiement
     44Mb 
   </td>
   <td>
-    <div class="download"
+    <div class="download">
       <a href="http://pogo.ece.drexel.edu/download/POGODB_all_geneIDs.csv.bz2">
         <img src="images/icons/text.png">
         all_geneIDs.csv.bz2
