@@ -63,8 +63,6 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 
 <?php include 'header.php'; ?>
 <div class=main>
-<h1>P.O.G.O. db
-</h1>
 <p>
 Database of Pairwise-comparisons Of Genomes and universal Orthologous genes 
 </p>

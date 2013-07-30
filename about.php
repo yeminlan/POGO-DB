@@ -59,6 +59,7 @@ The POGO-DB interface allows you to:
       exploratory analysis of how different genomes and universal gene markers relate to each
       other within a taxonomic group.</li>
   <li>Download pairwise genome BLAST files that were computed. </li>
+  <li>Access the pairwise orthologous sequences from NCBI's database via accession number and gene locations</li>
 </ul>
 
 <a name="currentvision"></a>

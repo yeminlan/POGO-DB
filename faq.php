@@ -20,6 +20,7 @@
 <li> <a href="#7"> Why does the database provide branch selection only up to the genus level?</a> </li>
 <li> <a href="#8"> Can I download the entire database?</a></li>
 <li> <a href="#9"> Can I download all the raw BLAST results?</a></li>
+<li> <a href="#10">Can I download the sequences of all orthologs between each pair of genomes?</a></li>
 </ol>
 
 <a name="1"></a>
@@ -140,14 +141,24 @@ genomes we provided. This is in fact one of the major reasons we built this
 database: to save people from the massive computation time of BLAST-ing genomes
 against genomes. It should be noted that we have BLAST results for a total of
 717,861 pairs of genomes, bi-directionally.  Therefore, the final output takes
-approximately 665G’s storage (bz2 compressed) and will take a long time to
+approximately 680G’s storage (bz2 compressed) and will take a long time to
 download. 
+</p>
+
 <p>
 <a href="download/all.tar">All.tar (~665GB)</a>
 </p>
 
+<a name="10"></a>
+<h3>Can I download the sequences of all orthologs between each pair of genomes?</h3>
+<p>
+Yes. In addition to the whole genome BLAST files we provided for download (for
+user selected comparisons or all comparisons), users will get a list of gene ID
+indexing upon download. This indexing file could be used to map each gene ID in
+the BLAST files to the accession number plus gene location in the NCBI
+database. Users can therefore download the sequences for their downstream
+analyses.
 </p>
-
 </div>
 <?php include 'footer.php'; ?>
 </div>
