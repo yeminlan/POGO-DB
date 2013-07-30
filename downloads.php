@@ -110,6 +110,7 @@ We provide users with all of our data, so that they can do their own experiement
     </div>
   </td>
   <td>
+    This file links the gene IDs in each genome to their accession number and location in NCBI, where the sequences can be downloaded.
   </td>
 </tr>
 </table>
