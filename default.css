@@ -1,13 +1,14 @@
 body {
   background-color:#F5F5F1;
+  margin:0px;
   }
 
 #container { 
-  margin-top:1em;
-  margin-bottom:1em;
-  margin-left: 2em;
-  margin-right: 2em;
-  border: 1px solid #999;
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
   font-family:sans-serif;
   background-color:#FFFFFF;
 }
@@ -122,15 +123,13 @@ border-collapse:collapse;
 .doc_table a:visited{
   color:#08c;
 }
-.doc_table td, .doc_table th 
-{
+.doc_table td, .doc_table th  {
 font-size:1.1em;
 border:1px solid #08c;
 padding:3px 7px 2px 7px;
 }
 
-.doc_table th 
-{
+.doc_table th  {
 font-size:1.1em;
 text-align:left;
 padding-top:5px;
@@ -139,8 +138,7 @@ background-color:#99CCFF;
 color:#08f;
 }
 
-.doc_table tr.alt td 
-{
+.doc_table tr.alt td {
 color:#000;
 background-color:#C2E0FF;
 }
