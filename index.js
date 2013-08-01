@@ -376,6 +376,7 @@ function selected(type) {
 
   Genomes.options.length = 0;
   addValueToSelectBox(Genomes, "All");
+  Genomes.selectedIndex = 0;
 
   if(species_val === "All") { 
     if(genus_val === "All") { 
