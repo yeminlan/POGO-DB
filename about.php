@@ -4,6 +4,7 @@
   <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 
+<?php include 'noscript.php'; ?>
 <div id=container>
 <?php include 'header.php'; ?>
 <div class=main> 

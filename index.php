@@ -58,7 +58,8 @@ while($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 
 </head>
 
-<body>
+<?php include 'noscript.php'; ?>
+
 <div id=container>
 
 <?php include 'header.php'; ?>
