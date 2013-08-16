@@ -20,11 +20,13 @@ if(!isset($_POST["a"]) && !isset($_POST["b"])) {
 }
 
 if(isset($_POST["a"])) {
-  $a_array = explode(",", $_POST["a"]);
+	$a_stripped = preg_replace('/[^0-9,]/', '', $a_stripped);
+  $a_array = explode(",", $a_stripped);
 }
 
 if(isset($_POST["b"])) {
-  $b_array = explode(",", $_POST["b"]);
+	$b_stripped = preg_replace('/[^0-9,]/', '', $b_stripped);
+  $b_array = explode(",", $b_stripped);
 }
 
 $timea = microtime(true);
