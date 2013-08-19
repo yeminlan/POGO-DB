@@ -3,9 +3,7 @@ include 'login.php';
 include 'functions.php';
 include 'time.php';
 
-ini_set('display_errors', 'On');
 ini_set('memory_limit', '512M');
-error_reporting(E_ALL);
 
 $i = 0;
 $data=array();
@@ -56,9 +54,13 @@ if( $_POST["bvb"] === 'true') {
 
 <?php
 // Get our data columns
-  while($row = mysqli_fetch_field($result)) {
-    $data_columns[] = $row->name;
-  }
+	if(isset($result)) {
+		if($result) {
+			while($row = mysqli_fetch_field($result)) {
+				$data_columns[] = $row->name;
+			}
+		}
+	}
   $timeb = microtime(true);
   $time = $timeb - $timea;
   echo "<div id=time>time_elapsed:" . $time . "\n</div></div>";
