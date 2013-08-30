@@ -72,6 +72,7 @@ if(count($data) == 0) { ?>
   <head>
     <title>POGO - No Results </title>
     <link rel="stylesheet" type="text/css" href="default.css">
+		<style>#load { display:none; }</style>
   </head>
 
   <body>
@@ -102,6 +103,8 @@ else { ?>
 
     <link rel="stylesheet" type="text/css" href="default.css">
     <link rel="stylesheet" type="text/css" href="results.css">
+
+		<style>#load { display:none; }</style>
 
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>

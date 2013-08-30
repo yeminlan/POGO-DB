@@ -21,8 +21,6 @@ $('input[type=checkbox]').live('change', function () {
 
 $(document).ready(function(){
 
-    $("#load").hide();
-
     // create our columns array
     cols = [];
     for(var i = 1; i < dataColumns.length; i++){
