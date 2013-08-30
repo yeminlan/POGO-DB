@@ -439,7 +439,7 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   </tr>
   <tr>
   <td>ArgS, CdsA, CoaE, etc.</td>
-  <td>other (besides 16S rRNA) marker gene identities<td>
+  <td>other (besides 16S rRNA) marker gene identities</td>
   <td>float</td>
   </tr>
   <tr>
