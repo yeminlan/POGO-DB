@@ -83,7 +83,7 @@ if(count($data) == 0) { ?>
         <h1>No Results</h1>
         <p>
           The POGO database did not find any matches to your query.
-          <a href=><sup>?</sup></a>
+          <sup><a href="faq.php#3">?</a></sup>
         </p>
       </center>
       </div>

@@ -13,7 +13,7 @@
 
 <ol>
 <li> <a href="#1">Can I add the same genome to both group A and group B? </a> </li>
-<li> <a href="#2"> Why does the result missing some of the genome pairs I queried?  </a></li>
+<li> <a href="#2"> Why are my results missing some of the genome pairs I queried?  </a></li>
 <li> <a href="#3"> Why are some metrics missing for a few pairs of genomes?  </a></li>
 <li> <a href="#4"> What does the option Calculate Average Ranking” do? </a> </li>
 <li> <a href="#5"> Why do you provide two criteria for determining orthologs?</a> </li> 
