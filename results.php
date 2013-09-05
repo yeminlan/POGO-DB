@@ -1,7 +1,6 @@
 <?php
 include 'login.php';
 include 'functions.php';
-include 'time.php';
 
 ini_set('memory_limit', '512M');
 
