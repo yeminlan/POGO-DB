@@ -72,7 +72,7 @@ $(document).ready(function(){
       if(avg[2] == 1)  {
         table.parentNode.removeChild(table);
         var genediv = document.getElementById("avggenetext");
-        genediv.appendChild(document.createTextNode("Sorry Average ranking data is not available because all genome pairs queried are missing some marker genes.");
+        genediv.appendChild(document.createTextNode("Sorry Average ranking data is not available because all genome pairs queried are missing some marker genes."));
         break  marker_break;
       }
 
