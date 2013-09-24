@@ -221,7 +221,6 @@ function calculate_averages() {
   }
 
   // if we only have one row (which would be our marker gene list, then exit with a failure)
-	console.log(avg_data.length);
   if(avg_data.length == 0) {
     return [null, null, 1];
   }
