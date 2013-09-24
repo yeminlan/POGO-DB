@@ -7,6 +7,17 @@ error_reporting(E_ALL);
 $data_columns = array( "ID","GENOME_ID1","GENOME_ID2","NUMBER_OF_GENES1","NUMBER_OF_GENES2","FILE1V2","FILE2V1ORTHOLOGS_CRITERION1","ORTHOLOGS_CRITERION2","AVERAGE_AMINO_ACID_IDENTITY","GENOMIC_FLUIDITY","16S_RRNA","ARGS","CDSA","COAE","CPSG","DNAN","EFP","EXO","FFH","FTSY","FUSA","GLNS","GLYA","GROL","HISS","ILES","INFA","INFB","KSGA","LEUS","MAP","METG","NRDA","NUSG","PEPP","PHES","PHET","PROS","PYRG","RECA","RPLA","RPLB","RPLC","RPLD","RPLE","RPLF","RPLJ","RPLK","RPLM","RPLN","RPLP","RPLR","RPLV","RPLX","RPOA","RPOB","RPOC","RPSB","RPSC","RPSD","RPSE","RPSG","RPSH","RPSI","RPSJ","RPSK","RPSL","RPSM","RPSN","RPSO","RPSQ","RPSS","SECY","SERS","THRS","TMK","TOPA","TRPS","TRUB","TRXA","TRXB","TUFB","TYRS","VALS","GENOME1_NAME","GENOME1_PHYLUM","GENOME1_CLASS","GENOME1_ORDER","GENOME1_FAMILY","GENOME1_GENUS","GENOME1_SPECIES","GENOME1_SUPERKINGDOM","GENOME2_NAME","GENOME2_PHYLUM","GENOME2_CLASS","GENOME2_ORDER","GENOME2_FAMILY","GENOME2_GENUS","GENOME2_SPECIES","GENOME2_SUPERKINGDOM");
 $taxonomy_columns = array( "ID","GENOME","PHYLUM","CLASS","ORD","FAMILY","GENUS","SPECIES","SUPERKINGDOM" );
 
+function check_illegal_args($value, $argument);
+
+	boolean illegal = false;
+	args = array();
+	if (strpos($value, '"') !== FALSE)
+		
+	if (strpos($value, ';') !== FALSE)
+	if (strpos($value, '\\') !== FALSE)
+	if(illegal) 
+	 err("Illegal character(s) detected:", 
+
 function err($error_string) {
   echo $error_string;
   exit;
@@ -14,6 +25,8 @@ function err($error_string) {
 
 // do some basic checks.
 if(isset($_GET["type"])) {
+	check_illegal_args($_GET["type"], "type");
+
   if($_GET["type"] === "taxonomy") {
     $type = "taxonomy_api";
     $columns = $taxonomy_columns;
