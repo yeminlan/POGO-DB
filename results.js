@@ -72,7 +72,7 @@ $(document).ready(function(){
       if(avg[2] == 1)  {
         table.parentNode.removeChild(table);
         var genediv = document.getElementById("avggenetext");
-        genediv.appendChild(document.createTextNode("Sorry, all of your marker gene's were null!"));
+        genediv.appendChild(document.createTextNode("Sorry Average ranking data is not available because all genome pairs queried are missing some marker genes.");
         break  marker_break;
       }
 
@@ -221,7 +221,8 @@ function calculate_averages() {
   }
 
   // if we only have one row (which would be our marker gene list, then exit with a failure)
-  if(avg_data.length == 1) {
+	console.log(avg_data.length);
+  if(avg_data.length == 0) {
     return [null, null, 1];
   }
 
