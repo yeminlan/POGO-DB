@@ -17,30 +17,29 @@ be used to query the Pogo database directly.
 
 <div class=toc>
 <ol>
-  <a href="#introduction"><li>Introduction</li></a>
-  <a href="#organization"><li>Organization</li></a>
-  <a href="#query_basics"><li>Query basics</li></a>
-  <a href="#methods"><li>Methods</li></a>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#organization">Organization</a></li>
+  <li><a href="#query_basics">Query basics</a></li>
+  <li><a href="#methods">Methods</a></li>
     <ol type="a">
-      <a href="#type"><li>Type</li>
-      <a href="#select"><li>Select</li>
-      <a href="#where"><li>Where</li>
-      <a href="#limit"><li>Limit</li>
-      <a href="#output"><li>Output</li>
-      <a href="#array"><li>Array</li>
+      <li><a href="#type">Type</a></li>
+      <li><a href="#select">Select</a></li>
+      <li><a href="#where">Where</a></li>
+      <li><a href="#limit">Limit</a></li>
+      <li><a href="#output">Output</a></li>
+    	 <li><a href="#array">Array</a></li>
     </ol>
-  <a href="#properties"><li>Properties</li></a>
+  <li><a href="#properties">Properties</a></li>
     <ol type="a">
-      <a href="#taxonomy"><li>Taxonomy</li></a>
-      <a href="#data"><li>Comparison Data</li></a>
-      <a href="#download"><li>Blast Files</li></a>
+      <li><a href="#taxonomy">Taxonomy</a></li>
+      <li><a href="#data">Comparison Data</a></li>
+      <li><a href="#download">Blast Files</a></li>
     </ol>
-  <a href="#examples"><li>Examples</li></a>
+  <li><a href="#examples">Examples</a></li>
 </ol>
 </div>
 
-<a name="introduction"></a>
-<h2 style="border:0">Introduction</h2>
+<h2 id="introduction" style="border:0">Introduction</h2>
 <p>
 A key feature of POGO is the ability for users to be able to mass query
 our database. Our web interface has a certain use-case, and we recognize that
@@ -55,8 +54,7 @@ to directly query the database for information they are interested in.
 </p>
 
 
-<a name="organization"></a>
-<h2>Organization</h2>
+<h2 id="organization">Organization</h2>
 <p>
 POGO's database is internally represented by two tables. The data table
 contains comparison data between two genomes, and the taxonomy table
@@ -70,8 +68,7 @@ statements, since we use MySQL as our database backend.
 </p>
 
 
-<a name="query_basics"></a>
-<h2>Query Basics</h2>
+<h2 id="query_basics">Query Basics</h2>
 Users can query the website using this url:
 
 <code>
@@ -97,13 +94,11 @@ interested in</p>
   The 'methods' section below explains how we can do just that.
 </p>
 
-<a name="methods"></a>
-<h1>Methods</h1>
+<h1 id="methods">Methods</h1>
   There are three main methods that our API accepts. Type, Select, and Where.
   There are also other arguments including and Array, and Limit and Output.
   
-  <a name="type"></a>
-  <h2>Type</h2>
+  <h2 id="type">Type</h2>
   <p>
     The Type argument tells the API which table you are querying, and is
     always required when using the API. There are only two options,
@@ -129,8 +124,7 @@ interested in</p>
     </code>
   <p>
 
-  <a name="select"></a>
-  <h2>Select</h2>
+<h2 id="select">Select</h2>
   <p>
   The Select argument allows you to choose which columns you are interested in.
   To know what columns are available please refer to the Properties section of
@@ -157,23 +151,28 @@ interested in</p>
   </code>
   </p>
 
-  <a name="where"></a>
-  <h2>Where</h2>
+  <h2 id="where">Where</h2>
   <p>
   The Where argument allows you to filter the rows based upon a statement.
   These operators and statements should be familiar to anyone with rudimentary
   knowledge of logic or programming.
   </p>
 
-  <p> At the bottom of this document are examples for different where statements</h2>
+  <p>
+		At the bottom of this document are examples for different where statements
+	</p>
 
   <p>
   The operators we support are listed below
   </p>
   <table class="doc_table" style="display:inline-block">
   <thead>
-  <th>Equality Operator</th><th>Explanation</th>
+		<tr>
+  		<th>Equality Operator</th>
+			<th>Explanation</th>
+		</tr>
   </thead>
+	<tbody>
   <tr>
     <td>=</td>
     <td>equal</td>
@@ -202,21 +201,29 @@ interested in</p>
     <td>xor</td>
     <td>Exclusive OR operator</td>
   </tr>
+	</tbody>
   </table>
 
   <p>We also support other statements that allow users to do string comparisons.
   <table class="doc_table" style="display:inline-block">
   <thead>
-  <th>String Comparison</th><th>explanation</th><th>Usage</th>
+		<tr>
+  		<th>String Comparison</th>
+			<th>Explanation</th>
+			<th>Usage</th>
+		</tr>
   </thead>
-  <tr>
-    <td>like(string)</td>
-    <td>wrapper for MySQL LIKE</td>
-    <td>genus like('Chlamy')</td>
-  </tr>
+	<tbody>
+  	<tr>
+    	<td>like(string)</td>
+    	<td>wrapper for MySQL LIKE</td>
+    	<td>genus like('Chlamy')</td>
+  	</tr>
+	</tbody>
   </table>
 
-  <h3>Examples</h3>
+
+<h3>Examples</h3>
 
   <p>
   Select all columns from rows where the genus is Bacillus
@@ -265,16 +272,14 @@ interested in</p>
   </code>
   </p>
 
-  <a name="limit"></a>
-  <h2>Limit</h2>
+  <h2 id="limit">Limit</h2>
   <p> The Limit argument allows the user to specify how many results you want to return at maximum</p>
 
   <code>
     http://pogo.ece.drexel.edu/query.php?type=data&limit=1000
   </code>
 
-  <a name="output"></a>
-  <h2>Output</h2>
+  <h2 id="output">Output</h2>
   <p>The Output argument allows you to specify if you want CSV or JSON output. By default a JSON array will be returned.
   </p>
 
@@ -282,8 +287,7 @@ interested in</p>
     http://pogo.ece.drexel.edu/query.php?type=data&limit=1000&output=csv
   </code>
 
-  <a name="array"></a>
-  <h2>Array</h2>
+  <h2 id="array">Array</h2>
   <p>The Array argument allows you to specify if you want either a JSON
   Associative Array, or a Indexed Array, if you are using JSON as your output
   type. For more information read this <a
@@ -295,8 +299,10 @@ interested in</p>
   </p>
   <table class="doc_table" style="display:inline-block";>
     <thead>
-      <th>Option</th>
-      <th>Explanation</th>
+			<tr>
+      	<th>Option</th>
+      	<th>Explanation</th>
+			</tr>
     </thead>
     <tbody>
       <tr>
@@ -310,21 +316,18 @@ interested in</p>
     </tbody>
   </table>
 
-   <p>This is an example of returning an associative array in the data table</p>
-    <code>
-      http://pogo.ece.drexel.edu/query.php?type=data&output=JSON&array=ASSOC&limit=10
-    </code>
-  </p>
+  <p>This is an example of returning an associative array in the data table</p>
+	<code>
+		http://pogo.ece.drexel.edu/query.php?type=data&output=JSON&array=ASSOC&limit=10
+	</code>
 
-<a name="properties"></a>
-<h1>Properties</h1>
+<h1 id="properties">Properties</h1>
 <p>
 This section details the columns available in our data and taxonomy tables. Each
 column can be used in where statements, and in the select arguments.
 </p>
 
-<a name="taxonomy"></a>
-<h2>Taxonomy Table</h2>
+<h2 id="taxonomy">Taxonomy Table</h2>
 
 <p>
 Our taxonomy table is collected from NCBI with some small changes.
@@ -388,8 +391,7 @@ Our taxonomy table is collected from NCBI with some small changes.
   </tbody>
 </table>
 
-<a name="data"></a>
-<h2>Comparison Data</h2>
+<h2 id="data">Comparison Data</h2>
 <p>
 The comparison table contains all the information you see on the regular
 webpage, like orthologs, 16S_rRNA, and other marker genes.
@@ -475,8 +477,7 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   </tbody>
 </table>
 
-<a name="download"></a>
-<h2>Blast files</h2>
+<h2 id="download">Blast files</h2>
   <p>
     In order to get a tarball of blast files from our database, you need to
     query our download url. This is done in the same method as the regular
@@ -493,8 +494,7 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
     http://pogo.ece.drexel.edu/download.php?ids=2354,19201,623719
   </code>
 
-<a name="examples">
-<h1>Examples</h1>
+<h1 id="examples">Examples</h1>
 
 <h2>Taxonomy Comparisons</h2>
 
@@ -532,7 +532,7 @@ here's a pseudo-code where statement on how to correctly ask for all A vs B:
     http://pogo.ece.drexel.edu/query.php?type=data&where=genome1_species='Haemophilus influenzae' and genome2_species='Haemophilus influenzae'
   </code>
 </div>
-<php include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
 </div>
 
 </body>
