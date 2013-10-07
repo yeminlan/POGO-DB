@@ -109,8 +109,8 @@ $(document).ready(function(){
     for(var i = 3; i < dataColumns.length - 1; i++){
         var option = document.createElement("option");
         if(dataColumns[i] === "Average AAI" || 
-           dataColumns[i] === "Orthologs (1)" ||
-           dataColumns[i] === "Orthologs (2)" ||
+           dataColumns[i] === "Orthologs (Criterion 1)" ||
+           dataColumns[i] === "Orthologs (Criterion 2)" ||
            dataColumns[i] === "Genomic Fluidity")
         {
           option.text = dataColumns[i];
