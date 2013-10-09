@@ -12,7 +12,7 @@
 
 <ol>
 <li> <a href="#introduction">Introduction</a></li>
-<li> <a href="#currentvision">Current Vision</a></li>
+<li> <a href="#currentversion">Current Version</a></li>
 <li> <a href="#genomepairwisemetrics">Genome Pairwise Metrics</a></li>
 <li> <a href="#comparisonbetweentwo">Example: Comparison Between Two Species</a></li>
 <li> <a href="#comparisonwithinasinglespecies">Example: Comparison Within A Single Species</a></li> 
@@ -63,7 +63,7 @@ The POGO-DB interface allows you to:
   <li>Access the pairwise orthologous sequences from NCBI's database via accession number and gene locations</li>
 </ul>
 
-<a name="currentvision"></a>
+<a name="currentversion"></a>
 <h2>Current Version</h2>
 <p>
 The current release of POGO-DB is based on genomes of 2,013 bacteria strains
@@ -140,7 +140,7 @@ algorithm and the percent identity are provided for each marker gene. The names
 and symbols of the marker genes are:
 </p>
 
-<table> 
+<table class="doc_table" style="display:inline-block">
 <thead>
   <th>Gene Symbol</th>
   <th>COG ID</th>
