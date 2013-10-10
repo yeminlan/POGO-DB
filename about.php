@@ -1,3 +1,4 @@
+<!DOCTYPE HTML SYSTEM>
 <html>
 <head>
   <title>POGO - About.</title>
@@ -142,9 +143,11 @@ and symbols of the marker genes are:
 
 <table class="doc_table" style="display:inline-block">
 <thead>
-  <th>Gene Symbol</th>
-  <th>COG ID</th>
-  <th>Description</th>
+	<tr>
+  	<th>Gene Symbol</th>
+  	<th>COG ID</th>
+  	<th>Description</th>
+	</tr>
 </thead>
 <tbody>
 <tr>
@@ -494,7 +497,7 @@ and symbols of the marker genes are:
 </tbody>
 </table>
 <p>
-<a name="averageranking">
+<a name="averageranking"></a>
 <b>Average ranking of marker genes:</b>
 We allow users to compare marker genes across genome pairs. For pairs with both
 genomes containing all 73 marker genes and the 16S rRNA gene, we rank the genes
@@ -519,7 +522,7 @@ each genome in group B, however, the users are free to choose whether they also
 want the comparisons within group A and within group B. 
 </p>
 
-<img src="images/example_comparison_between_two_species_1.png">
+<img src="images/example_comparison_between_two_species_1.png" alt="Comparison options on home page ">
 <p>
 The result page presents a table, and each row of it represents a pair of
 genomes queried, as long as the two genomes have 80+% 16S rRNA gene identity.
@@ -529,7 +532,7 @@ defined by two criteria), the 16S rRNA gene identity and the identity of other
 marker genes
 </p>
 
-<img src="images/example_comparison_between_two_species_2.png">
+<img src="images/example_comparison_between_two_species_2.png" alt="Comparison Table">
 
 <p>
 In addition, a 2-D graph will be provided for the users, to plot any two metrics
@@ -538,9 +541,9 @@ By choosing different metrics on the axis, users can visualize which marker gene
 better groups/separates the two selected groups of genomes. 
 </p>
 
-<img src="images/example_comparison_between_two_species_5.png">
+<img src="images/example_comparison_between_two_species_5.png" alt="2D Graph of Comparison - 16S rRNA vs. Average AAI">
 <br>
-<img src="images/example_comparison_between_two_species_3.png">
+<img src="images/example_comparison_between_two_species_3.png" alt="2D Graph of Comparison - InfA vs. Average AAI">
 
 
 <p>
@@ -550,7 +553,7 @@ this gene is a good marker for differentiating the two species but cannot be
 used for differentiating the genomes within each species. 
 </p>
 
-<img src="images/example_comparison_between_two_species_4.png">
+<img src="images/example_comparison_between_two_species_4.png" alt="Average Marker Gene Table" >
 
 <p>
 If the "Average Ranking" option is checked, an additional table will be provided
@@ -571,7 +574,7 @@ of interest into only one group, for example, adding species â€œBacillus cereusâ
 to group A, and choose to compare A to itself. 
 </p>
 
-<img src="images/example_comparison_within_a_single_species_1.png">
+<img src="images/example_comparison_within_a_single_species_1.png" alt="Comparison options on home page">
 
 <p>
 In this example, we can see that the average amino acid identity ranges from
@@ -581,7 +584,7 @@ average AAI, which is the similarity metric of two genomes over all their
 orthologs. Therefore, the 16S rRNA gene is not a good marker for this species
 </p>
 
-<img src="images/example_comparison_within_a_single_species_2.png">
+<img src="images/example_comparison_within_a_single_species_2.png" alt="16s rRNA vs Average AAI">
 
 <p>
 To the contrary, several other marker genes such as the RpoB gene provide a
@@ -589,7 +592,7 @@ continuous and more correlated variation between the genomes, and hence can be a
 potentially better marker gene for this species. 
 </p>
 
-<img src="images/example_comparison_within_a_single_species_3.png">
+<img src="images/example_comparison_within_a_single_species_3.png" alt="RpoB vs AAI">
 
 <a name="allvsall"></a>
 <h2>Example: All vs. All</h2>
@@ -604,10 +607,9 @@ also provide several graphs of All vs. All, which are also available on the
 download page
 
 
-<img src="images/example_all_vs_all_1.png"><br>
-<img src="images/example_all_vs_all_2.png"><br>
-<img src="images/example_all_vs_all_3.png"><br>
-<img src="">
+<img src="images/example_all_vs_all_1.png" alt="% AAI vs .Maximum 16S simliarity between 2 genomes"><br>
+<img src="images/example_all_vs_all_2.png" alt="Genomic Fluidity vs. Maximum 16S simliarity between 2 genomes">><br>
+<img src="images/example_all_vs_all_3.png" alt="Genomic Fluidity vs. % AAI"><br>
 </div>
 <?php include 'footer.php'; ?>
 
