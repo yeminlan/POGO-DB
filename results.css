@@ -31,3 +31,11 @@ table.display tr.even.row_bvb td {
 table.display tr.odd.row_bvb  td {
   background-color: #8f8f8f;
 }
+
+.paging_full_numbers {
+	margin-top: .3em;
+}
+
+.dataTables_info {
+	margin-top: .3em;
+}
