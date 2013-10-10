@@ -297,7 +297,7 @@ interested in</p>
   This argument is optional, and the POGO database will return numerical arrays
   by default.
   </p>
-  <table class="doc_table" style="display:inline-block";>
+  <table class="doc_table" style="display:inline-block">
     <thead>
 			<tr>
       	<th>Option</th>
@@ -335,9 +335,11 @@ Our taxonomy table is collected from NCBI with some small changes.
 
 <table class="doc_table"> 
   <thead>
-    <th>Column Name</th>
-    <th>Description</th>
-    <th>Type</th>
+		<tr>
+    	<th>Column Name</th>
+    	<th>Description</th>
+    	<th>Type</th>
+		</tr>
   </thead>
   <tbody>
   <tr>
@@ -485,8 +487,9 @@ webpage, like orthologs, 16S_rRNA, and other marker genes.
   </p>
 
   <p>
-  The ids variable corresponds to the "id" column in the comparison table.   <p>
+  The ids variable corresponds to the "id" column in the comparison table.
   </p>
+	<p>
   This example requests a tarball containing blast files from comparisons with
   the id's 2354, 19201, and 623719.
   </p>
