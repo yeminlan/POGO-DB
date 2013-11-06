@@ -48,8 +48,8 @@ add the same genomes to both group A and B for comparison, or add them only to
 group A and select “Compare A to itself” before submitting the query.
 </p>
 
-<a name="3"></a>
-<h3>Why does the result missing some ofthe genome pairs I queried?</h3>
+<a name="2"></a>
+<h3>Why does the result missing some of the genome pairs I queried?</h3>
 <p>
 The POGO-DB contains BLAST result of pairs of genomes whose 16S rRNA identity is above 80%, therefore some pairs of genomes
 may not be returned if the pair does not meet this criterion. The reason that we
