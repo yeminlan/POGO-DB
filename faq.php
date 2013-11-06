@@ -28,10 +28,11 @@
 <a name="1"></a>
 <h3>How Do I Cite Pogo?</h3>
 <p>
+<a href="http://nar.oxfordjournals.org/content/early/2013/11/05/nar.gkt1094.abstract">
 Yemin Lan, J. Calvin Morrison, Ruth Hershberg, and Gail L. Rosen.<br>
 "POGO-DB—a database of pairwise-comparisons of genomes and conserved orthologous genes,"<br>
 Nucleic Acids Research, 2013. </br>
-<a href="http://nar.oxfordjournals.org/content/early/2013/11/05/nar.gkt1094.abstract">Open Access</a>
+Open Access</a>
 </p>
 <a name="2"></a>
 <h3>Can I add the same genome to both group A and group B? </h3>
