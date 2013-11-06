@@ -12,19 +12,28 @@
 <h1>F.A.Q.</h1>
 
 <ol>
-<li> <a href="#1">Can I add the same genome to both group A and group B? </a> </li>
-<li> <a href="#2"> Why are my results missing some of the genome pairs I queried?  </a></li>
-<li> <a href="#3"> Why are some metrics missing for a few pairs of genomes?  </a></li>
-<li> <a href="#4"> What does the option Calculate Average Ranking” do? </a> </li>
-<li> <a href="#5"> Why do you provide two criteria for determining orthologs?</a> </li> 
-<li> <a href="#6"> Why does the database only cover genome pairs whose 16S rRNA identity is above 80%? </a> </li>
-<li> <a href="#7"> Why does the database provide branch selection only up to the genus level?</a> </li>
-<li> <a href="#8"> Can I download the entire database?</a></li>
-<li> <a href="#9"> Can I download all the raw BLAST results?</a></li>
-<li> <a href="#10">Can I download the sequences of all orthologs between each pair of genomes?</a></li>
+<li> <a href="#1">How Do I Cite Pogo?</a></li>
+<li> <a href="#2">Can I add the same genome to both group A and group B? </a> </li>
+<li> <a href="#3">Why are my results missing some of the genome pairs I queried?  </a></li>
+<li> <a href="#4">Why are some metrics missing for a few pairs of genomes?  </a></li>
+<li> <a href="#5">What does the option Calculate Average Ranking” do? </a> </li>
+<li> <a href="#6">Why do you provide two criteria for determining orthologs?</a> </li> 
+<li> <a href="#7">Why does the database only cover genome pairs whose 16S rRNA identity is above 80%? </a> </li>
+<li> <a href="#8">Why does the database provide branch selection only up to the genus level?</a> </li>
+<li> <a href="#9">Can I download the entire database?</a></li>
+<li> <a href="#10">Can I download all the raw BLAST results?</a></li>
+<li> <a href="#11">Can I download the sequences of all orthologs between each pair of genomes?</a></li>
 </ol>
 
 <a name="1"></a>
+<h3>How Do I Cite Pogo?</h3>
+<p>
+Yemin Lan, J. Calvin Morrison, Ruth Hershberg, and Gail L. Rosen.<br>
+"POGO-DB—a database of pairwise-comparisons of genomes and conserved orthologous genes,"<br>
+Nucleic Acids Research, 2013. </br>
+<a href="http://nar.oxfordjournals.org/content/early/2013/11/05/nar.gkt1094.abstract">Open Access</a>
+</p>
+<a name="2"></a>
 <h3>Can I add the same genome to both group A and group B? </h3>
 <p>
 Yes. Users may sometimes add a genome to group A twice or group B twice, for
@@ -39,7 +48,7 @@ add the same genomes to both group A and B for comparison, or add them only to
 group A and select “Compare A to itself” before submitting the query.
 </p>
 
-<a name="2"></a>
+<a name="3"></a>
 <h3>Why does the result missing some ofthe genome pairs I queried?</h3>
 <p>
 The POGO-DB contains BLAST result of pairs of genomes whose 16S rRNA identity is above 80%, therefore some pairs of genomes
@@ -57,7 +66,7 @@ showing the result for comparing a genome to itself because all metrics will be
 default comparison between genomes in group A vs. genomes in group B.  
 </p>
 
-<a name="3"></a>
+<a name="4"></a>
 <h3>Why are some metrics missing for a few pairs of genomes?  </h3>
 <p>
 The POGO-DB only computes
@@ -72,7 +81,7 @@ gene. Therefore, pairs of these genomes will not have the identity of some
 marker genes. 
 </p>
 
-<a name="4"></a>
+<a name="5"></a>
 <h3>What does the option "Calculate Average Ranking" do?</h3>
 <p>
 In addition to the several metrics we provide for each genome pair, we also allow users to compare
@@ -85,7 +94,7 @@ ranking of marker genes will only be computed for pairs of genomes where all
 marker genes are identified in both genomes.  
 </p>
 
-<a name="5"></a>
+<a name="6"></a>
 <h3>Why do you provide two criteria for determining orthologs?</h3>
 We used criterion1 (70+% read length covered with 30+% identity at the amino
 acid level) to define orthologs used for computing the average AAI between two
@@ -98,7 +107,7 @@ second and loosened criterion for defining orthologs. Hence the computation of
 genomic fluidity is more reliable than using the same criterion as the
 computation of average AAI.  
 
-<a name="6"></a>
+<a name="7"></a>
 <h3>Why does the database only cover genome pairs whose 16S rRNA identity is above 80%?</h3>
 <p>
 The reason that we apply such a limitation is because the BLAST between genomes
@@ -112,7 +121,7 @@ rRNA percent identity table of all genomes pairwisely here <a href="/download/PO
 </p>
 
 
-<a name="7"></a>
+<a name="8"></a>
 <h3>Why does the database provide branch selection only up to the genus level?</h3>
 <p>
 The search time will increase exponentially to the number of genomes queried.
@@ -123,7 +132,7 @@ genome pairs, we encourage them to acquire all the information in the database
 results on our <a href="about.php#allvsall">about page</a>.
 </p>
 
-<a name="8"></a>
+<a name="9"></a>
 <h3>Can I download the entire database?</h3>
 <p>
 Yes. In addition to the download link we provided every time for the selected
@@ -133,7 +142,7 @@ and the all of the BLAST output files (<a href="download/All.tar">All.tar</a>). 
 interested in a large amount of genome pairwise comparisons.  
 </p>
 
-<a name="9"></a>
+<a name="10"></a>
 <h3>Can I download all the raw BLAST results?</h3>
 <p>
 Yes. In addition to the download link we provided for the queried genome pairs,
@@ -150,7 +159,7 @@ download.
 <a href="download/all.tar">All.tar (~665GB)</a>
 </p>
 
-<a name="10"></a>
+<a name="11"></a>
 <h3>Can I download the sequences of all orthologs between each pair of genomes?</h3>
 <p>
 Yes. In addition to the whole genome BLAST files we provided for download (for
@@ -160,6 +169,7 @@ the BLAST files to the accession number plus gene location in the NCBI
 database. Users can therefore download the sequences for their downstream
 analyses.
 </p>
+
 </div>
 <?php include 'footer.php'; ?>
 </div>
