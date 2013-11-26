@@ -1,6 +1,6 @@
 <div class="header">
-<div class="h_logo"><a href="http://www.ece.drexel.edu/gailr/EESI/"><img src="images/drexel.jpg" alt="EESI Lab" height=50 width=50 ></a></div>
-<div class="h_logo"><a href="http://hershberg.net.technion.ac.il/"><img src="images/technion_logo.png" alt="technicon logo" height=50 width=50 ></a></div>
+<div class="h_logo"><a href="http://www.ece.drexel.edu/gailr/EESI/"><img src="images/drexel.thumb.jpg" alt="EESI Lab" height=50 width=50 ></a></div>
+<div class="h_logo"><a href="http://hershberg.net.technion.ac.il/"><img src="images/technion_logo.thumb.png" alt="technicon logo" height=50 width=50 ></a></div>
 <div class="h_title"><a href="/">POGO db</a></div>
 </div>
 <div class="h_links">
