@@ -1,7 +1,7 @@
 <!DOCTYPE HTML SYSTEM>
 <html>
 <head>
-  <title>POGO - About.</title>
+  <title>POGO - About</title>
   <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 
@@ -9,7 +9,7 @@
 <div id=container>
 <?php include 'header.php'; ?>
 <div class=main> 
-<h1> About POGO </h1>
+<h1>About POGO</h1>
 
 <ol>
 <li> <a href="#introduction">Introduction</a></li>
@@ -21,7 +21,7 @@
 </ol>
 
 <a name="introduction"></a>
-<h2> Introduction</h2>
+<h2>Introduction</h2>
 <p>
 A major aim of metagenomic studies is to identify and compare the phylogenetic
 composition of different samples. This task is usually accomplished by the use of marker genes that are
