@@ -98,7 +98,7 @@ else { ?>
 
     <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="lib/jqplot/jquery.jqplot.min.css">
-    <link rel="stylesheet" type="text/css" href="media/css/TableTools.css">
+    <link rel="stylesheet" type="text/css" href="lib/tabletools/css/TableTools.css">
 
     <link rel="stylesheet" type="text/css" href="default.css">
     <link rel="stylesheet" type="text/css" href="results.css">
@@ -108,8 +108,8 @@ else { ?>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 
-    <script type="text/javascript" src="media/js/TableTools.min.js"></script>
-    <script type="text/javascript" src="media/js/ZeroClipboard.js"></script>
+    <script type="text/javascript" src="lib/tabletools/js/TableTools.min.js"></script>
+    <script type="text/javascript" src="lib/tabletools/js/ZeroClipboard.js"></script>
     <script type="text/javascript" src="lib/FixedColumns.min.js"></script>
 
     <script type="text/javascript" src="lib/jqplot/jquery.jqplot.min.js"></script>

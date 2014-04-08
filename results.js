@@ -37,7 +37,7 @@ $(document).ready(function(){
     "sDom": 'T<"clear">lfrtip',
     "sPaginationType": "full_numbers",
     "oTableTools": {
-      "sSwfPath": "media/swf/copy_cvs_xls.swf",
+      "sSwfPath": "lib/tabletools/swf/copy_csv_xls.swf",
       "aButtons": [
         {
           "sExtends": "copy",
@@ -93,7 +93,7 @@ $(document).ready(function(){
         "bDeferRender": true,
         "sDom": 'T<"clear">lfrtip',
         "oTableTools": {
-          "sSwfPath": "media/swf/copy_cvs_xls.swf",
+          "sSwfPath": "lib/tabletools/swf/copy_csv_xls.swf",
           "aButtons": [ "copy", "csv" ]
           }
        }

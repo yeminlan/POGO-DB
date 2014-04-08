@@ -5,7 +5,6 @@
 <?php
 
 include 'login.php';
-include 'search.php';
 error_reporting(E_ALL);
 
 $query = "SELECT Genus, Species, Genome, id FROM taxonomy;";
