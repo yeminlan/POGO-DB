@@ -9,5 +9,12 @@ POGO-DB allows users to compare microbial genomes using pre-computed metrics tha
 (iv) pairwise identity of the 16S ribosomal RNA genes;
 (v) pairwise identity of an additional 73 marker genes present in >90% prokaryotes.
 
+# Current Version
+The current release of POGO-DB is based on genomes of 2,013 bacteria strains from the NCBI database (as of available in July, 2012). Update is in progress to incorporate 910 more bacteria strains (as of available in February, 2015).
 
-
+# Credits
+The manuscript has been published on Nucleic Acids Research (http://nar.oxfordjournals.org/content/early/2013/11/05/nar.gkt1094)by:
+Yemin Lan
+J. Calvin Morrison
+Ruth Hershberg
+Gail L. Rosen2
