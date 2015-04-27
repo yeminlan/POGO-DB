@@ -6,11 +6,11 @@ POGO-DB (http://pogo.ece.drexel.edu) aims to provide biologists and bioinformati
 
 POGO-DB allows users to compare microbial genomes using pre-computed metrics that were derived from extensive computationally intensive comparisons of >2000 microbes, and help decide optimal marker genes for any user-selected microbial group that would best reconstruct the microbial relationship groundtruth:
 
-(i) average protein sequence identity across all orthologs shared by two genomes;
-(ii) genomic fluidity (a measure of gene content dissimilarity);
-(iii) number of ‘orthologs’ shared between two genomes;
-(iv) pairwise identity of the 16S ribosomal RNA genes;
-(v) pairwise identity of an additional 73 marker genes present in >90% prokaryotes.
+* Average protein sequence identity across all orthologs shared by two genomes;
+* Genomic fluidity (a measure of gene content dissimilarity);
+* Number of ‘orthologs’ shared between two genomes;
+* Pairwise identity of the 16S ribosomal RNA genes;
+* Pairwise identity of an additional 73 marker genes present in >90% prokaryotes.
 
 # Current Version
 
@@ -20,8 +20,8 @@ The current release of POGO-DB is based on genomes of 2,013 bacteria strains fro
 
 The manuscript has been published on Nucleic Acids Research (http://nar.oxfordjournals.org/content/early/2013/11/05/nar.gkt1094)by:
 
-Yemin Lan
-J. Calvin Morrison
-Ruth Hershberg
-Gail L. Rosen
+* Yemin Lan
+* J. Calvin Morrison
+* Ruth Hershberg
+* Gail L. Rosen
 
