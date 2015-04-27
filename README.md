@@ -18,7 +18,7 @@ The current release of POGO-DB is based on genomes of 2,013 bacteria strains fro
 
 # Credits
 
-The manuscript has been published on Nucleic Acids Research (http://nar.oxfordjournals.org/content/early/2013/11/05/nar.gkt1094)by:
+The manuscript has been published on Nucleic Acids Research (http://nar.oxfordjournals.org/content/early/2013/11/05/nar.gkt1094) by:
 
 * Yemin Lan
 * J. Calvin Morrison
