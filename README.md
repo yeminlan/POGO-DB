@@ -17,4 +17,5 @@ The manuscript has been published on Nucleic Acids Research (http://nar.oxfordjo
 Yemin Lan
 J. Calvin Morrison
 Ruth Hershberg
-Gail L. Rosen2
+Gail L. Rosen
+
